@@ -21,7 +21,11 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
+<<<<<<< HEAD
                 "value": "{\"m_Value\":\"C:/Users/Aditya/Desktop/GameDev/FlipQuest/SpellGame/SpellGame/WebGL Builds;;;;;;;;;\"}"
+=======
+                "value": "{\"m_Value\":\"D:/CSCI/Unity/build/alpha1.02;D:/CSCI/Unity/Project/alpha1.02/WebGL Builds;C:/Users/Aditya/Desktop/GameDev/FlipQuest/SpellGame/SpellGame/WebGL Builds;;;;;;;\"}"
+>>>>>>> 58bdbda (Second Commit)
             }
         ]
     }
