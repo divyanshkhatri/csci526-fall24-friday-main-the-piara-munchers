@@ -12,8 +12,31 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
+<<<<<<< HEAD
   companyName: USC
   productName: FlipQuest
+=======
+<<<<<<< HEAD
+  companyName: USC
+  productName: FlipQuest
+=======
+<<<<<<< HEAD
+  companyName: USC
+  productName: FlipQuest
+=======
+  companyName: DefaultCompany
+<<<<<<< HEAD
+  productName: FlipQuest
+=======
+<<<<<<< HEAD
+  productName: FlipQuest
+=======
+  productName: SpellGame
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -44,8 +67,48 @@ PlayerSettings:
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
+<<<<<<< HEAD
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 1920
+  defaultScreenHeightWeb: 1080
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+=======
+  defaultScreenWidthWeb: 1920
+  defaultScreenHeightWeb: 1080
+>>>>>>> 58bdbda (Second Commit)
+=======
+  defaultScreenWidthWeb: 1920
+  defaultScreenHeightWeb: 1080
+>>>>>>> 315e5cf (alpha1.04)
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   unsupportedMSAAFallback: 0
@@ -414,9 +477,55 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
+<<<<<<< HEAD
   m_BuildTargetGroupLightmapEncodingQuality:
   - m_BuildTarget: WebGL
     m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality: []
+=======
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+>>>>>>> 58bdbda (Second Commit)
+=======
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+>>>>>>> 315e5cf (alpha1.04)
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetNormalMapEncoding: []
   m_BuildTargetDefaultTextureCompressionFormat:
@@ -664,11 +773,51 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   webGLCompressionFormat: 2
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+<<<<<<< HEAD
+  webGLCompressionFormat: 2
+=======
+<<<<<<< HEAD
+  webGLCompressionFormat: 2
+=======
+<<<<<<< HEAD
+  webGLCompressionFormat: 2
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  webGLCompressionFormat: 0
+=======
+  webGLCompressionFormat: 2
+>>>>>>> 58bdbda (Second Commit)
+=======
+  webGLCompressionFormat: 2
+>>>>>>> 315e5cf (alpha1.04)
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+  webGLWasmArithmeticExceptions: 0
+  webGLLinkerTarget: 1
+  webGLThreadsSupport: 0
+  webGLDecompressionFallback: 1
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   webGLPowerPreference: 2
   scriptingDefineSymbols: {}
   additionalCompilerArguments: {}
@@ -758,12 +907,28 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   cloudServicesEnabled:
     Build: 0
     Game Performance: 0
     Purchasing: 0
     UDP: 0
     Unity Ads: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+  cloudServicesEnabled: {}
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -778,11 +943,31 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   cloudProjectId: c8daf2c1-632b-405f-af87-edec9439ed6a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: FlipQuest (1)
   organizationId: adityac_unity974
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+  cloudProjectId: 804de720-2208-4d08-835c-b690c19b60a3
+  framebufferDepthMemorylessMode: 0
+  qualitySettingsNames: []
+  projectName: SpellGame
+  organizationId: huruoche
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

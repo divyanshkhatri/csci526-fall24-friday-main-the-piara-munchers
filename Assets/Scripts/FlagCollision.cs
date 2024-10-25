@@ -138,27 +138,6 @@ public class FlagCollision : MonoBehaviour
     public void NextLevel()
     {
         Debug.Log("Next Level");
-        if (isAnalyticsInitialized)
-        {
-            try
-            {
-                float completionTime = Time.time - startTime;
-                CustomEvent myEvent = new CustomEvent("levels_played") {
-                    { "levels_played", SceneManager.sceneCountInBuildSettings }
-                };
-                AnalyticsService.Instance.RecordEvent(myEvent);
-
-                Debug.Log("Analytics event 'levels_played' sent successfully");
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogError("Failed to send analytics event: " + ex.Message);
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Analytics is not initialized or enabled.");
-        }
         SceneController.instance.NextLevel();
     }
 }

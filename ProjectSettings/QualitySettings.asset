@@ -27,7 +27,26 @@ QualitySettings:
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     vSyncCount: 0
+<<<<<<< HEAD
     realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     lodBias: 0.3
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -64,7 +83,26 @@ QualitySettings:
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     vSyncCount: 0
+<<<<<<< HEAD
     realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     lodBias: 0.4
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -101,7 +139,26 @@ QualitySettings:
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
     vSyncCount: 1
+<<<<<<< HEAD
     realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 25
+=======
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     lodBias: 0.7
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -138,7 +195,26 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
+<<<<<<< HEAD
     realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     lodBias: 1
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -175,7 +251,26 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
+<<<<<<< HEAD
     realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 50
+=======
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     lodBias: 1.5
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -212,7 +307,26 @@ QualitySettings:
     realtimeReflectionProbes: 1
     billboardsFaceCameraPosition: 1
     vSyncCount: 1
+<<<<<<< HEAD
     realtimeGICPUUsage: 100
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 100
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 100
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 100
+=======
+<<<<<<< HEAD
+    realtimeGICPUUsage: 100
+=======
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     lodBias: 2
     maximumLODLevel: 0
     streamingMipmapsActive: 0
@@ -230,6 +344,19 @@ QualitySettings:
     excludedTargetPlatforms: []
   m_PerPlatformDefaultQuality:
     Android: 2
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     GameCoreScarlett: 5
     GameCoreXboxOne: 5
     Lumin: 5
@@ -237,6 +364,26 @@ QualitySettings:
     PS4: 5
     PS5: 5
     Server: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+    Lumin: 5
+    GameCoreScarlett: 5
+    GameCoreXboxOne: 5
+    Nintendo Switch: 5
+    PS4: 5
+    PS5: 5
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
+>>>>>>> 92f22479b3808c76892f12778900f6779d5bfd16
+>>>>>>> 200d1e3b782abd2c1f70f3a7b5d71eb1a46aac86
     Stadia: 5
     Standalone: 5
     WebGL: 3
