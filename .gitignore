@@ -106,4 +106,8 @@ Thumbs.db
 # Other
 *.apk
 *.aab
+<<<<<<< HEAD
 *.crashlytics
+=======
+*.crashlytics
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
