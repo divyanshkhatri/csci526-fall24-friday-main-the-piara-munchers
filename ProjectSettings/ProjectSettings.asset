@@ -13,7 +13,15 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
+<<<<<<< HEAD
   productName: FlipQuest
+=======
+<<<<<<< HEAD
+  productName: FlipQuest
+=======
+  productName: SpellGame
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -44,8 +52,33 @@ PlayerSettings:
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
   defaultScreenHeight: 1080
+<<<<<<< HEAD
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 540
+=======
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 1920
+  defaultScreenHeightWeb: 1080
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  defaultScreenWidthWeb: 960
+  defaultScreenHeightWeb: 600
+=======
+  defaultScreenWidthWeb: 1920
+  defaultScreenHeightWeb: 1080
+>>>>>>> 58bdbda (Second Commit)
+=======
+  defaultScreenWidthWeb: 1920
+  defaultScreenHeightWeb: 1080
+>>>>>>> 315e5cf (alpha1.04)
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
   m_StereoRenderingPath: 0
   m_ActiveColorSpace: 0
   unsupportedMSAAFallback: 0
@@ -414,9 +447,37 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
+<<<<<<< HEAD
   m_BuildTargetGroupLightmapEncodingQuality:
   - m_BuildTarget: WebGL
     m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  m_BuildTargetGroupLightmapEncodingQuality: []
+=======
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+>>>>>>> 58bdbda (Second Commit)
+=======
+  m_BuildTargetGroupLightmapEncodingQuality:
+  - m_BuildTarget: WebGL
+    m_EncodingQuality: 1
+>>>>>>> 315e5cf (alpha1.04)
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
   m_BuildTargetGroupLightmapSettings: []
   m_BuildTargetNormalMapEncoding: []
   m_BuildTargetDefaultTextureCompressionFormat:
@@ -664,7 +725,27 @@ PlayerSettings:
   webGLTemplate: APPLICATION:Default
   webGLAnalyzeBuildSize: 0
   webGLUseEmbeddedResources: 0
+<<<<<<< HEAD
   webGLCompressionFormat: 2
+=======
+<<<<<<< HEAD
+  webGLCompressionFormat: 2
+=======
+<<<<<<< HEAD
+  webGLCompressionFormat: 2
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+  webGLCompressionFormat: 0
+=======
+  webGLCompressionFormat: 2
+>>>>>>> 58bdbda (Second Commit)
+=======
+  webGLCompressionFormat: 2
+>>>>>>> 315e5cf (alpha1.04)
+>>>>>>> 4a1ea9a9493455a0e27dafbcdf67fdfbf589e2aa
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
   webGLWasmArithmeticExceptions: 0
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
