@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // using UnityEngine;
 // using UnityEngine.UI;
 // using UnityEngine.SceneManagement;
@@ -48,11 +49,17 @@ using Unity.Services.Analytics;
 using Unity.Services.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+=======
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
 
 public class FlagCollision : MonoBehaviour
 {
     public GameObject levelCompletePanel;
     public PlayerMovement playerController;
+<<<<<<< HEAD
 
     private float startTime;
     public Button nextLevelButton;
@@ -131,13 +138,53 @@ public class FlagCollision : MonoBehaviour
         }
         else
         {
+=======
+    public Button nextLevelButton;
+    void Start() {
+        nextLevelButton.onClick.AddListener(NextLevel);
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+        Debug.Log("Current Build Index: " + SceneManager.GetActiveScene().buildIndex);
+        
+        if (other.gameObject.CompareTag("Player") && Collectible.collectiblesRemaining == 0)
+        {
+            levelCompletePanel.SetActive(true);
+            if (SceneManager.GetActiveScene().buildIndex == 2) {
+<<<<<<< HEAD
+=======
+=======
+        if (other.gameObject.CompareTag("Player") && Collectible.collectiblesRemaining == 0)
+        {
+            levelCompletePanel.SetActive(true);
+            if (SceneManager.GetActiveScene().buildIndex == 1) {
+>>>>>>> 074fd6c3a85606bdc5b933751e7cdfc8c8c50d00
+>>>>>>> 9012d2579bda88cba695b229e29cda736f046d4b
+              nextLevelButton.gameObject.SetActive(false);
+            }
+            playerController.canMove = false;
+
+        } else {
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
             playerController.canMove = true;
         }
     }
 
+<<<<<<< HEAD
     public void NextLevel()
     {
         Debug.Log("Next Level");
         SceneController.instance.NextLevel();
     }
 }
+=======
+    public void NextLevel() {
+      Debug.Log("Next Level");
+      SceneController.instance.NextLevel();
+    }
+}
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013

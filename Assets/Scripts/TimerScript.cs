@@ -8,7 +8,11 @@ using TMPro;
 public class TimerScript : MonoBehaviour
 {   
    [SerializeField] TextMeshProUGUI timerText;
+<<<<<<< HEAD
    [SerializeField] float remainingTime;
+=======
+    [SerializeField] float remainingTime;
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
     public GameObject levelFailPanel;
     public PlayerMovement playerController;
 

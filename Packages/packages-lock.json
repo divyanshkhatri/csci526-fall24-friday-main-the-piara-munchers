@@ -185,6 +185,7 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+<<<<<<< HEAD
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.1",
       "depth": 2,
@@ -214,6 +215,8 @@
       },
       "url": "https://packages.unity.com"
     },
+=======
+>>>>>>> ebe98c7e745507b165b5fbe38e12d5ddb222c013
     "com.unity.settings-manager": {
       "version": "1.0.3",
       "depth": 1,
