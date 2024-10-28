@@ -1,4 +1,0 @@
-repository "alpha1.07@PiaraMunchers@cloud"
-  path "/"
-    br "/main"
-    co "/main"
