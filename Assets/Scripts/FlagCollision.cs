@@ -123,7 +123,7 @@ public class FlagCollision : MonoBehaviour
             }
 
             levelCompletePanel.SetActive(true);
-            if (SceneManager.GetActiveScene().buildIndex == 2)
+            if (SceneManager.GetActiveScene().buildIndex == 3)
             {
                 nextLevelButton.gameObject.SetActive(false);
             }
