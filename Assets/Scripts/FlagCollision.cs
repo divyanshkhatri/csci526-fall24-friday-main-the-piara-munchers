@@ -58,6 +58,8 @@ public class FlagCollision : MonoBehaviour
     public Button nextLevelButton;
     private bool isAnalyticsInitialized = false;
 
+    public FireBaseAnalytics firebaseAnalytics;
+
     async void Start()
     {
         nextLevelButton.onClick.AddListener(NextLevel);
@@ -99,17 +101,16 @@ public class FlagCollision : MonoBehaviour
             {
                 try
                 {
+                    // Log with Unity Analytics
                     float completionTime = Time.time - startTime;
                     CustomEvent myEvent = new CustomEvent("level_completed") {
-                        { "level_index", SceneManager.GetActiveScene().buildIndex },
-                        { "completion_time", completionTime},
-                        { "hit_count", playerController.hitCount},
-                        { "lives_remaining", 3 - playerController.hitCount},
-                    };
-
+                    { "level_index", SceneManager.GetActiveScene().buildIndex },
+                    { "completion_time", completionTime},
+                    { "hit_count", playerController.hitCount},
+                    { "lives_remaining", 3 - playerController.hitCount},
+                };
 
                     AnalyticsService.Instance.RecordEvent(myEvent);
-
                     Debug.Log("Analytics event 'level_completed' sent successfully");
                 }
                 catch (System.Exception ex)
@@ -117,9 +118,17 @@ public class FlagCollision : MonoBehaviour
                     Debug.LogError("Failed to send analytics event: " + ex.Message);
                 }
             }
+
+            // Post event to Firebase
+            if (firebaseAnalytics != null)
+            {
+                firebaseAnalytics.completionTime = Time.time - startTime;
+                firebaseAnalytics.PostToFireBase();
+                Debug.Log("Posted to Firebase");
+            }
             else
             {
-                Debug.LogWarning("Analytics is not initialized or enabled.");
+                Debug.LogError("FirebaseAnalytics reference is missing in FlagCollision.");
             }
 
             levelCompletePanel.SetActive(true);
@@ -134,7 +143,6 @@ public class FlagCollision : MonoBehaviour
             playerController.canMove = true;
         }
     }
-
     public void NextLevel()
     {
         Debug.Log("Next Level");

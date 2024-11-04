@@ -1,0 +1,4 @@
+repository "csci526-fall24-friday-main-the-piara-munchers-dev@PiaraMunchers@cloud"
+  path "/"
+    br "/main"
+    co "/main"
