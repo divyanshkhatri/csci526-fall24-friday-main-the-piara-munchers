@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class TimerScript : MonoBehaviour
-{   
+{
    [SerializeField] TextMeshProUGUI timerText;
    [SerializeField] float remainingTime;
     public GameObject levelFailPanel;
@@ -20,10 +20,10 @@ public class TimerScript : MonoBehaviour
 
         else if (remainingTime <= 0) {
             remainingTime = 0;
-            //Function to implement gameOver() can go here 
             timerText.color = Color.red;
             levelFailPanel.SetActive(true);
             playerController.canMove = false;
+            SessionManager.Instance.PostSessionDataToFireBase();
         }
 
         int mins = Mathf.FloorToInt(remainingTime / 60);

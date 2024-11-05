@@ -8,11 +8,13 @@ public class CheckpointEntry
 {
     public string checkpointID;
     public int hitCount;
+    public float timeTaken;
 
-    public CheckpointEntry(string checkpointID, int hitCount)
+    public CheckpointEntry(string checkpointID, int hitCount, float timeTaken)
     {
         this.checkpointID = checkpointID;
         this.hitCount = hitCount;
+        this.timeTaken = timeTaken;
     }
 }
 
@@ -30,19 +32,20 @@ public class SessionData
         sessionTime = DateTime.Now.ToString("o");
     }
 
-    public void AddCheckpoint(string checkpointID, int hitCount)
+    public void AddCheckpoint(string checkpointID, int hitCount, float timeTaken)
     {
         Debug.Log("AddCheckpoint called for: " + checkpointID);
         var checkpoint = crossedCheckpoints.Find(c => c.checkpointID == checkpointID);
         if (checkpoint != null)
         {
             checkpoint.hitCount += hitCount;
+            checkpoint.timeTaken += timeTaken;
         }
         else
         {
-            crossedCheckpoints.Add(new CheckpointEntry(checkpointID, hitCount));
+            crossedCheckpoints.Add(new CheckpointEntry(checkpointID, hitCount, timeTaken));
         }
-        Debug.Log("Checkpoint " + checkpointID + " crossed with " + hitCount + " hits.");
+        Debug.Log("Checkpoint " + checkpointID + " crossed with " + hitCount + " hits and " + timeTaken + " seconds.");
     }
 
     public void PostToFireBase()

@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-// using UnityEngine.Analytics;
-// using Unity.Services.Analytics;
 using Unity.Services.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,19 +14,21 @@ public class FlagCollision : MonoBehaviour
     public Button nextLevelButton;
     public FireBaseAnalytics firebaseAnalytics;
 
+    private bool hasTriggered = false;
+
     void Start()
     {
         nextLevelButton.onClick.AddListener(NextLevel);
         startTime = Time.time;
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Current Build Index: " + SceneManager.GetActiveScene().buildIndex);
-        if (other.gameObject.CompareTag("Player") && Collectible.collectiblesRemaining == 0)
+        if (!hasTriggered && other.gameObject.CompareTag("Player") && Collectible.collectiblesRemaining == 0)
         {
-            // Post event to Firebase
+            hasTriggered = true;
+            Debug.Log("Current Build Index: " + SceneManager.GetActiveScene().buildIndex);
+
             if (firebaseAnalytics != null)
             {
                 firebaseAnalytics.completionTime = Time.time - startTime;
@@ -43,15 +43,13 @@ public class FlagCollision : MonoBehaviour
             levelCompletePanel.SetActive(true);
             if (SceneManager.GetActiveScene().buildIndex == 3)
             {
+                SessionManager.Instance.PostSessionDataToFireBase();
                 nextLevelButton.gameObject.SetActive(false);
             }
             playerController.canMove = false;
         }
-        else
-        {
-            playerController.canMove = true;
-        }
     }
+
     public void NextLevel()
     {
         Debug.Log("Next Level");

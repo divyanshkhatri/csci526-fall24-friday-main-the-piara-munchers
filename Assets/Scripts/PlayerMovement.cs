@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
     public GameObject levelFailPanel;
     public bool canMove = true;
     public Button restartButton;
+    private bool hasTriggeredFail = false; // Add this flag
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        hasTriggeredFail = false; // Reset flag when scene starts
     }
 
     void Update()
@@ -28,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove)
         {
             rb.velocity = Vector2.zero;
-            return; // Early return to block further input processing
+            return;
         }
 
         float moveInput = Input.GetAxis("Horizontal");
@@ -81,14 +84,21 @@ public class PlayerMovement : MonoBehaviour
 
                 spriteRenderer.color = new Color(0.8f, 0.0f, 0.4f);
             }
-            else if (hitCount >= 3)
+            else if (hitCount >= 3 && !hasTriggeredFail)
+            {
+                hasTriggeredFail = true;
+                hitCount = 3;
+                canMove = false;
+                levelFailPanel.SetActive(true);
+                // other.isTrigger = false;
+                Checkpoint closestCheckpoint = SessionManager.Instance.GetClosestUpcomingCheckpoint(transform.position);
+                if (closestCheckpoint != null)
                 {
-                    hitCount = 3;
-                    canMove = false;
-                    levelFailPanel.SetActive(true);
-                    other.isTrigger = false;
-                    SessionManager.Instance.PostSessionDataToFireBase();
+                    SessionManager.Instance.AddCheckpoint(closestCheckpoint.checkpointID);
+                    Debug.Log("Closest upcoming checkpoint: " + closestCheckpoint.checkpointID);
                 }
+                SessionManager.Instance.PostSessionDataToFireBase();
+            }
         }
         if (other.gameObject.CompareTag("Finish") && Collectible.collectiblesRemaining == 0)
         {
@@ -98,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void RestartScene()
     {
+        hasTriggeredFail = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
