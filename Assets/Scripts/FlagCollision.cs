@@ -53,6 +53,7 @@ public class FlagCollision : MonoBehaviour
     public void NextLevel()
     {
         Debug.Log("Next Level");
+        SessionManager.Instance.isDataPosted = false; // Reset the flag
         SceneController.instance.NextLevel();
     }
 }

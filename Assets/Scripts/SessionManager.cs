@@ -9,6 +9,7 @@ public class SessionManager : MonoBehaviour
     public PlayerMovement playerController;
     public List<Checkpoint> allCheckpoints = new List<Checkpoint>();
     private float lastCheckpointTime;
+    public bool isDataPosted = false;
 
     private void Awake()
     {
@@ -64,7 +65,9 @@ public class SessionManager : MonoBehaviour
 
     public void PostSessionDataToFireBase()
     {
+        if (isDataPosted) return;
         sessionData.PostToFireBase();
+        isDataPosted = true;
     }
 
     public void RegisterCheckpoint(Checkpoint checkpoint)
@@ -80,14 +83,26 @@ public class SessionManager : MonoBehaviour
         Checkpoint closestCheckpoint = null;
         float closestDistance = float.MaxValue;
 
+        if (sessionData == null)
+        {
+            Debug.LogError("SessionData is null.");
+            return null;
+        }
+
         if (sessionData.crossedCheckpoints == null)
         {
-            Debug.LogError("crossedCheckpoints is not initialized.");
-            return null;
+            Debug.LogWarning("crossedCheckpoints is null. Initializing it.");
+            sessionData.crossedCheckpoints = new List<CheckpointEntry>();
         }
 
         foreach (var checkpoint in allCheckpoints)
         {
+            if (checkpoint == null)
+            {
+                Debug.LogWarning("Encountered a null checkpoint in allCheckpoints list.");
+                continue;
+            }
+
             if (!sessionData.crossedCheckpoints.Exists(c => c.checkpointID == checkpoint.checkpointID))
             {
                 float distance = Vector3.Distance(playerPosition, checkpoint.transform.position);
@@ -103,6 +118,11 @@ public class SessionManager : MonoBehaviour
                     closestCheckpoint = checkpoint;
                 }
             }
+        }
+
+        if (closestCheckpoint == null)
+        {
+            Debug.LogWarning("No upcoming checkpoint found.");
         }
 
         return closestCheckpoint;

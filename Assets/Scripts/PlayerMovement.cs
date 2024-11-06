@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
     public void RestartScene()
     {
         hasTriggeredFail = false;
+        SessionManager.Instance.isDataPosted = false; // Reset the flag
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
