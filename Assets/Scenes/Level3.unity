@@ -738,10 +738,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 312969519}
   playerController: {fileID: 656991040}
-  timerScript: {fileID: 1027719858}
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
-  levelCompleteColor: {r: 0, g: 1, b: 0, a: 1}
+  timerScript: {fileID: 1027719858}
 --- !u!1 &134434931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1105,8 +1104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac11e88b9ffe5384a8e08e4ad648f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBreak: 1
-  respawnTime: 0.4
+  timeToBreak: 0.5
+  respawnTime: 1.5
   referenceObject: {fileID: 1547720469}
 --- !u!1 &204431434 stripped
 GameObject:
@@ -9052,10 +9051,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 312969519}
   playerController: {fileID: 656991040}
-  timerScript: {fileID: 1027719858}
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
-  levelCompleteColor: {r: 0, g: 1, b: 0, a: 1}
+  timerScript: {fileID: 1027719858}
 --- !u!1 &1467123552
 GameObject:
   m_ObjectHideFlags: 0
