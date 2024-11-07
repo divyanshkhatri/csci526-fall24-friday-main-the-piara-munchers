@@ -89,15 +89,20 @@ public class PlayerMovement : MonoBehaviour
                 hasTriggeredFail = true;
                 hitCount = 3;
                 canMove = false;
-                levelFailPanel.SetActive(true);
-                // other.isTrigger = false;
-                Checkpoint closestCheckpoint = SessionManager.Instance.GetClosestUpcomingCheckpoint(transform.position);
-                if (closestCheckpoint != null)
+                if (levelFailPanel != null)
                 {
-                    SessionManager.Instance.AddCheckpoint(closestCheckpoint.checkpointID);
-                    Debug.Log("Closest upcoming checkpoint: " + closestCheckpoint.checkpointID);
+                    levelFailPanel.SetActive(true);
                 }
-                SessionManager.Instance.PostSessionDataToFireBase();
+                if (SessionManager.Instance != null)
+                {
+                    Checkpoint closestCheckpoint = SessionManager.Instance.GetClosestUpcomingCheckpoint(transform.position);
+                    if (closestCheckpoint != null)
+                    {
+                        SessionManager.Instance.AddCheckpoint(closestCheckpoint.checkpointID);
+                        Debug.Log("Closest upcoming checkpoint: " + closestCheckpoint.checkpointID);
+                    }
+                    SessionManager.Instance.PostSessionDataToFireBase();
+                }
             }
         }
         if (other.gameObject.CompareTag("Finish") && Collectible.collectiblesRemaining == 0)
@@ -109,10 +114,9 @@ public class PlayerMovement : MonoBehaviour
     public void RestartScene()
     {
         hasTriggeredFail = false;
-        SessionManager.Instance.isDataPosted = false; // Reset the flag
+        SessionManager.Instance.isDataPosted = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
 }
 
 
