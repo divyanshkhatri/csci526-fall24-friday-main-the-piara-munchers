@@ -3134,9 +3134,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 619587358}
   playerController: {fileID: 1036887043}
-  timerScript: {fileID: 0}
   nextLevelButton: {fileID: 1608208027}
   firebaseAnalytics: {fileID: 0}
+  timerScript: {fileID: 0}
 --- !u!1001 &862583154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3832,9 +3832,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 619587358}
   playerController: {fileID: 1036887043}
-  timerScript: {fileID: 363870283}
   nextLevelButton: {fileID: 1608208027}
   firebaseAnalytics: {fileID: 2083620573}
+  timerScript: {fileID: 363870283}
 --- !u!60 &1016515824
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7641,9 +7641,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 619587358}
   playerController: {fileID: 1036887043}
-  timerScript: {fileID: 363870283}
   nextLevelButton: {fileID: 1608208027}
   firebaseAnalytics: {fileID: 2083620573}
+  timerScript: {fileID: 363870283}
 --- !u!60 &2086312908
 PolygonCollider2D:
   m_ObjectHideFlags: 0
