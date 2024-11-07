@@ -10,6 +10,8 @@ TagManager:
   - DirectionalArrow
   - SubFinish
   - Checkpoint
+  - Movingplatform
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

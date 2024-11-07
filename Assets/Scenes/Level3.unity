@@ -636,8 +636,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132888709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -151.6, y: 23.99, z: 0}
-  m_LocalScale: {x: 1, y: 0.55, z: 1}
+  m_LocalPosition: {x: -151.6, y: 23.7041, z: 0}
+  m_LocalScale: {x: 1, y: 0.45166, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1901441688}
@@ -741,6 +741,7 @@ MonoBehaviour:
   timerScript: {fileID: 1027719858}
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
+  levelCompleteColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &134434931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3273,7 +3274,7 @@ GameObject:
   - component: {fileID: 636055573}
   m_Layer: 3
   m_Name: movplat2
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3542,6 +3543,7 @@ GameObject:
   - component: {fileID: 656991042}
   - component: {fileID: 656991041}
   - component: {fileID: 656991040}
+  - component: {fileID: 656991045}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3672,7 +3674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656991039}
   m_LocalRotation: {x: -0, y: -0, z: -0.1933517, w: 0.9811295}
-  m_LocalPosition: {x: 11.61, y: 2.24, z: 0}
+  m_LocalPosition: {x: 22.81, y: 2.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3680,6 +3682,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -22.297}
+--- !u!114 &656991045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656991039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01a974d8e822248469d2f05c57ef8b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &670560109
 GameObject:
   m_ObjectHideFlags: 0
@@ -5102,7 +5116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 901702414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -139.87, y: 28.57, z: 0}
+  m_LocalPosition: {x: -149.53, y: 28.57, z: 0}
   m_LocalScale: {x: 3.8560264, y: 0.4820033, z: 0.9640066}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6768,7 +6782,7 @@ GameObject:
   - component: {fileID: 1140674061}
   m_Layer: 3
   m_Name: movplat1
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8965,8 +8979,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455893690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -152.02, y: 23.391, z: 0}
-  m_LocalScale: {x: 0.165, y: 2, z: 1}
+  m_LocalPosition: {x: -152.02, y: 23.2122, z: 0}
+  m_LocalScale: {x: 0.165, y: 1.6424, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1901441688}
@@ -9041,6 +9055,7 @@ MonoBehaviour:
   timerScript: {fileID: 1027719858}
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
+  levelCompleteColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!1 &1467123552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10310,7 +10325,7 @@ GameObject:
   - component: {fileID: 1702647908}
   m_Layer: 0
   m_Name: Waypoint2
-  m_TagString: Untagged
+  m_TagString: Movingplatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10792,7 +10807,7 @@ GameObject:
   - component: {fileID: 1751116577}
   m_Layer: 0
   m_Name: movplatform1
-  m_TagString: Untagged
+  m_TagString: MovingPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
