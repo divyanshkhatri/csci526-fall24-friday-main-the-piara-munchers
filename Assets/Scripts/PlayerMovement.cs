@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        hasTriggeredFail = false; // Reset flag when scene starts
+        hasTriggeredFail = false;
     }
 
     void Update()

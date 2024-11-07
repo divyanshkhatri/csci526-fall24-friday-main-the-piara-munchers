@@ -2486,8 +2486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac11e88b9ffe5384a8e08e4ad648f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBreak: 0.5
-  respawnTime: 0.3
+  timeToBreak: 0.3
+  respawnTime: 1.5
   referenceObject: {fileID: 318281499}
 --- !u!61 &442112924
 BoxCollider2D:
@@ -4470,8 +4470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac11e88b9ffe5384a8e08e4ad648f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBreak: 0.5
-  respawnTime: 0.3
+  timeToBreak: 0.3
+  respawnTime: 1.5
   referenceObject: {fileID: 318281499}
 --- !u!61 &762574626
 BoxCollider2D:
@@ -9642,8 +9642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac11e88b9ffe5384a8e08e4ad648f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBreak: 0.5
-  respawnTime: 0.3
+  timeToBreak: 0.3
+  respawnTime: 1.5
   referenceObject: {fileID: 318281499}
 --- !u!1 &1547720467
 GameObject:
@@ -11689,8 +11689,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902665736}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27, y: -5.721, z: 0}
-  m_LocalScale: {x: 0.99050516, y: 0.1693287, z: 0.3386574}
+  m_LocalPosition: {x: -26.96, y: -5.14, z: 0}
+  m_LocalScale: {x: 1.5, y: 0.4693287, z: 0.3386574}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 488084358}
@@ -11807,8 +11807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac11e88b9ffe5384a8e08e4ad648f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToBreak: 0.2
-  respawnTime: 0.2
+  timeToBreak: 0.3
+  respawnTime: 1.5
   referenceObject: {fileID: 318281499}
 --- !u!1 &1905081487
 GameObject:
