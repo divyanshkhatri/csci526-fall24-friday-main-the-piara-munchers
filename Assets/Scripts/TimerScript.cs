@@ -11,10 +11,11 @@ public class TimerScript : MonoBehaviour
    [SerializeField] float remainingTime;
     public GameObject levelFailPanel;
     public PlayerMovement playerController;
+    private bool isTimerStopped = false;
 
     void Update()
     {
-        if(remainingTime > 0) {
+        if (!isTimerStopped && remainingTime > 0) {
             remainingTime -= Time.deltaTime;
         }
 
@@ -31,6 +32,12 @@ public class TimerScript : MonoBehaviour
 
 
         timerText.text = string.Format("{0:00}:{1:00}", mins, sec);
+    }
+
+    public void StopTimer()
+    {
+        isTimerStopped = true;
+        Debug.Log("Timer stopped at: " + remainingTime);
     }
 
     void updateTimer(float currentTime) {

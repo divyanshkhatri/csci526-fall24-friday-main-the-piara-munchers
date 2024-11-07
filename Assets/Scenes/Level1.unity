@@ -4157,6 +4157,7 @@ MonoBehaviour:
   levelFailPanel: {fileID: 888413985}
   canMove: 1
   restartButton: {fileID: 1203371379}
+  timerScript: {fileID: 1053196207}
 --- !u!50 &1514624328
 Rigidbody2D:
   serializedVersion: 4
@@ -4782,6 +4783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 435430662}
   playerController: {fileID: 1514624327}
+  timerScript: {fileID: 1053196207}
   nextLevelButton: {fileID: 279112248}
   firebaseAnalytics: {fileID: 1515156100}
 --- !u!1001 &1861109603
@@ -5316,6 +5318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 435430662}
   playerController: {fileID: 1514624327}
+  timerScript: {fileID: 1053196207}
   nextLevelButton: {fileID: 279112248}
   firebaseAnalytics: {fileID: 1515156100}
 --- !u!1001 &1998400491

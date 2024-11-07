@@ -738,6 +738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 312969519}
   playerController: {fileID: 656991040}
+  timerScript: {fileID: 1027719858}
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
 --- !u!1 &134434931
@@ -3573,6 +3574,7 @@ MonoBehaviour:
   levelFailPanel: {fileID: 1153864419}
   canMove: 1
   restartButton: {fileID: 748729211}
+  timerScript: {fileID: 1027719858}
 --- !u!50 &656991041
 Rigidbody2D:
   serializedVersion: 4
@@ -9036,6 +9038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 312969519}
   playerController: {fileID: 656991040}
+  timerScript: {fileID: 1027719858}
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
 --- !u!1 &1467123552
@@ -11487,6 +11490,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873375911}
   m_CullTransparentMesh: 1
+--- !u!1 &1894647869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894647871}
+  - component: {fileID: 1894647870}
+  m_Layer: 0
+  m_Name: SessionManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1894647870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894647869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f10cb81a08d4ba2a7485ce2436e379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 656991040}
+  allCheckpoints: []
+  isDataPosted: 0
+--- !u!4 &1894647871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894647869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.421967, y: 6.8057976, z: -0.23923555}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1900569647
 GameObject:
   m_ObjectHideFlags: 0

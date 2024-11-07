@@ -9,6 +9,7 @@ public class FlagCollision : MonoBehaviour
 {
     public GameObject levelCompletePanel;
     public PlayerMovement playerController;
+    public TimerScript timerScript; // Reference to TimerScript
 
     private float startTime;
     public Button nextLevelButton;
@@ -20,12 +21,27 @@ public class FlagCollision : MonoBehaviour
     {
         nextLevelButton.onClick.AddListener(NextLevel);
         startTime = Time.time;
+
+        if (timerScript == null)
+        {
+            Debug.LogError("TimerScript reference is missing in FlagCollision.");
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (!hasTriggered && other.gameObject.CompareTag("Player") && Collectible.collectiblesRemaining == 0)
         {
+            Debug.Log("Player reached the flag, stopping timer.");
+            if (timerScript != null)
+            {
+                Debug.Log("Calling StopTimer from FlagCollision.");
+                timerScript.StopTimer();
+            }
+            else
+            {
+                Debug.LogError("TimerScript reference is missing in FlagCollision.");
+            }
             hasTriggered = true;
             Debug.Log("Current Build Index: " + SceneManager.GetActiveScene().buildIndex);
 

@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject levelFailPanel;
     public bool canMove = true;
     public Button restartButton;
-    private bool hasTriggeredFail = false; // Add this flag
+    private bool hasTriggeredFail = false;
+    public TimerScript timerScript;
 
     void Start()
     {
@@ -65,7 +66,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Player hit the trap!");
 
-
             if (hitCount < 3)
             {
                 hitCount++;
@@ -73,19 +73,26 @@ public class PlayerMovement : MonoBehaviour
 
             Debug.Log("Hit count: " + hitCount);
 
-
             if (hitCount == 1)
             {
-
                 spriteRenderer.color = Color.magenta;
             }
             else if (hitCount == 2)
             {
-
                 spriteRenderer.color = new Color(0.8f, 0.0f, 0.4f);
             }
             else if (hitCount >= 3 && !hasTriggeredFail)
             {
+                Debug.Log("Hit count reached 3, stopping timer.");
+                if (timerScript != null)
+                {
+                    Debug.Log("Calling StopTimer from PlayerMovement.");
+                    timerScript.StopTimer();
+                }
+                else
+                {
+                    Debug.LogError("TimerScript reference is missing in PlayerMovement.");
+                }
                 hasTriggeredFail = true;
                 hitCount = 3;
                 canMove = false;

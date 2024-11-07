@@ -22,8 +22,15 @@ public class SessionManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        sessionData = new SessionData();
-        Debug.Log("Session ID: " + sessionData.sessionID);
+        if (sessionData == null)
+        {
+            sessionData = new SessionData();
+            Debug.Log("New Session ID: " + sessionData.sessionID);
+        }
+        else
+        {
+            Debug.Log("Existing Session ID: " + sessionData.sessionID);
+        }
 
         SceneManager.sceneLoaded += OnSceneLoaded;
         lastCheckpointTime = Time.time;
