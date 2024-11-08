@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         hasTriggeredFail = false;
+        PauseManager.OnPause += HandlePause;
+    }
+
+    void OnDestroy()
+    {
+        PauseManager.OnPause -= HandlePause;
     }
 
     void Update()
@@ -123,6 +129,11 @@ public class PlayerMovement : MonoBehaviour
         hasTriggeredFail = false;
         SessionManager.Instance.isDataPosted = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void HandlePause(bool isPaused)
+    {
+        canMove = !isPaused;
     }
 }
 

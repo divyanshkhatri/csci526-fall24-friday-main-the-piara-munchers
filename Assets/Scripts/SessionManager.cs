@@ -32,6 +32,14 @@ public class SessionManager : MonoBehaviour
             Debug.Log("Existing Session ID: " + sessionData.sessionID);
         }
 
+        Debug.Log("Session ID: " + sessionData.sessionID);
+
+        Debug.Log("All Checkpoints:");
+        foreach (var checkpoint in allCheckpoints)
+        {
+            Debug.Log(checkpoint.checkpointID);
+        }
+
         SceneManager.sceneLoaded += OnSceneLoaded;
         lastCheckpointTime = Time.time;
     }
@@ -43,7 +51,11 @@ public class SessionManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        AssignPlayerController();
+        if (scene.name != "StartScene" && scene.name != "LevelsScene" && scene.name != "InstructionsScene")
+        {
+            AssignPlayerController();
+            ResetCheckpointTimer();
+        }
     }
 
     private void AssignPlayerController()
@@ -53,6 +65,11 @@ public class SessionManager : MonoBehaviour
         {
             Debug.LogError("PlayerController not found in the scene.");
         }
+    }
+
+    public void ResetCheckpointTimer()
+    {
+        lastCheckpointTime = Time.time;
     }
 
     public void AddCheckpoint(string checkpointID)
@@ -133,5 +150,14 @@ public class SessionManager : MonoBehaviour
         }
 
         return closestCheckpoint;
+    }
+
+    public void ResetCrossedCheckpoints()
+    {
+        if (sessionData != null)
+        {
+            sessionData.crossedCheckpoints.Clear();
+            Debug.Log("ResetCrossedCheckpoints method called.");
+        }
     }
 }

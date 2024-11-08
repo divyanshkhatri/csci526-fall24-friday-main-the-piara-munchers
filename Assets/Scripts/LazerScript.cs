@@ -1,15 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Add this line for SceneManager
+using UnityEngine.SceneManagement;
 
 public class LazerScript : MonoBehaviour
 {
     public PlayerMovement playerController;
     public Button restartButton;
     public GameObject levelFailPanel;
-
-    void Start() {
-    }
 
     void Update() {
         if (!playerController.canMove) {

@@ -8,15 +8,31 @@ public class FlipManager : MonoBehaviour
     public KeyCode flipKey = KeyCode.LeftArrow;
     private static bool isFlipped = false;
     public static event Action OnFlip;
+    private bool canFlip = true;
 
     public static bool IsFlipped
     {
         get { return isFlipped; }
     }
+
+    void Start()
+    {
+        PauseManager.OnPause += HandlePause;
+    }
+
+    void OnDestroy()
+    {
+        PauseManager.OnPause -= HandlePause;
+    }
+
+    void HandlePause(bool isPaused)
+    {
+        canFlip = !isPaused;
+    }
+
     void Update()
     {
-
-        if (Input.GetKeyDown(flipKey))
+        if (canFlip && Input.GetKeyDown(flipKey))
         {
             ToggleFlip();
             if (OnFlip != null)
@@ -26,15 +42,13 @@ public class FlipManager : MonoBehaviour
         }
     }
 
-
-
     void ToggleFlip()
     {
         isFlipped = !isFlipped;
 
         foreach (GameObject obj in flippableObjects)
         {
-            if (obj != player.gameObject) 
+            if (obj != player.gameObject)
             {
 
                 float relativePositionX = obj.transform.position.x - player.position.x;
@@ -51,8 +65,4 @@ public class FlipManager : MonoBehaviour
             }
         }
     }
-
-
-    
-
 }

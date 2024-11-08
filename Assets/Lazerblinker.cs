@@ -3,19 +3,17 @@ using System.Collections;
 
 public class Lazerblinker : MonoBehaviour
 {
-    // Reference to the feature you want to toggle (e.g., a GameObject or a Component)
     public GameObject featureToToggle;
     private bool isFeatureEnabled = true;
+    private bool isPaused = false;
 
-    // Start is called before the first frame update
     void Start()
     {
+        PauseManager.OnPause += HandlePause;
         if (featureToToggle != null)
         {
-            // Ensure the initial state is set
             featureToToggle.SetActive(isFeatureEnabled);
 
-            // Start the toggling coroutine
             StartCoroutine(ToggleFeatureCoroutine());
         }
         else
@@ -24,20 +22,30 @@ public class Lazerblinker : MonoBehaviour
         }
     }
 
-    // Coroutine that toggles the feature every 5 seconds
+    void OnDestroy()
+    {
+        PauseManager.OnPause -= HandlePause;
+    }
+
+    void HandlePause(bool pauseStatus)
+    {
+        isPaused = pauseStatus;
+    }
     IEnumerator ToggleFeatureCoroutine()
     {
         while (true)
         {
-            // Wait for 5 seconds
             yield return new WaitForSeconds(5f);
 
-            // Check if the feature still exists before toggling
+            if (isPaused)
+            {
+                continue;
+            }
+
             if (featureToToggle != null)
             {
-                // Toggle the feature
                 isFeatureEnabled = !isFeatureEnabled;
-                featureToToggle.SetActive(isFeatureEnabled); // Enable/Disable the feature
+                featureToToggle.SetActive(isFeatureEnabled);
             }
             else
             {

@@ -12,10 +12,26 @@ public class TimerScript : MonoBehaviour
     public GameObject levelFailPanel;
     public PlayerMovement playerController;
     private bool isTimerStopped = false;
+    private bool isPaused = false;
+
+    void Start()
+    {
+        PauseManager.OnPause += HandlePause;
+    }
+
+    void OnDestroy()
+    {
+        PauseManager.OnPause -= HandlePause;
+    }
+
+    void HandlePause(bool pauseStatus)
+    {
+        isPaused = pauseStatus;
+    }
 
     void Update()
     {
-        if (!isTimerStopped && remainingTime > 0) {
+        if (!isTimerStopped && !isPaused && remainingTime > 0) {
             remainingTime -= Time.deltaTime;
         }
 
