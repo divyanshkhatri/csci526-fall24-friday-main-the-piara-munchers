@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LaserCountdownTimer : MonoBehaviour
+public class Lasercountdowntimer : MonoBehaviour
 {
     public Text countdownText;
     public float laserBlinkInterval = 5f;
