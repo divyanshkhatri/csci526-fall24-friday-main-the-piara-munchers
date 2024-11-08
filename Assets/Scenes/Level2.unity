@@ -146,6 +146,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 1601749232}
   totalCollectibles: 5
+  flagColorChangers:
+  - {fileID: 2086312910}
+  - {fileID: 1016515826}
 --- !u!61 &13705196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1568,6 +1571,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 1359574248}
   totalCollectibles: 5
+  flagColorChangers:
+  - {fileID: 2086312910}
+  - {fileID: 1016515826}
 --- !u!61 &406750942
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2411,7 +2417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -89.640015, y: 68.119995}
+  m_AnchoredPosition: {x: -89.640045, y: 68.119995}
   m_SizeDelta: {x: 179.26, y: 136.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &644752910
@@ -3478,6 +3484,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 1135973089}
   totalCollectibles: 5
+  flagColorChangers:
+  - {fileID: 2086312910}
+  - {fileID: 1016515826}
 --- !u!61 &908304032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3796,6 +3805,7 @@ GameObject:
   - component: {fileID: 1016515825}
   - component: {fileID: 1016515824}
   - component: {fileID: 1016515823}
+  - component: {fileID: 1016515826}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Finish
@@ -3916,6 +3926,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1016515826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016515821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1036887038
 GameObject:
   m_ObjectHideFlags: 0
@@ -6973,6 +6995,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 445353250}
   totalCollectibles: 5
+  flagColorChangers:
+  - {fileID: 2086312910}
+  - {fileID: 1016515826}
 --- !u!61 &1864428170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7374,6 +7399,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 65905391}
   totalCollectibles: 5
+  flagColorChangers:
+  - {fileID: 2086312910}
+  - {fileID: 1016515826}
 --- !u!61 &2035745905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7605,6 +7633,7 @@ GameObject:
   - component: {fileID: 2086312909}
   - component: {fileID: 2086312908}
   - component: {fileID: 2086312907}
+  - component: {fileID: 2086312910}
   m_Layer: 0
   m_Name: Square
   m_TagString: Finish
@@ -7725,6 +7754,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2086312910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086312905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2097950791
 PrefabInstance:
   m_ObjectHideFlags: 0

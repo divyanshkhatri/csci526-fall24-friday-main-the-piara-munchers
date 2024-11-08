@@ -7,6 +7,7 @@ public class Collectible : MonoBehaviour
     public GameObject correspondingUIElement; 
     public static int collectiblesRemaining;
     public int totalCollectibles;
+    public ChangeFlagColor[] flagColorChangers; 
 
     void Start()
     {
@@ -21,6 +22,14 @@ public class Collectible : MonoBehaviour
             correspondingUIElement.SetActive(false); 
 
             collectiblesRemaining--;
+
+            if (collectiblesRemaining == 0)
+            {
+                foreach (var flagColorChanger in flagColorChangers)
+                {
+                    flagColorChanger.ChangeColorToYellow(); 
+                }
+            }
         }
     }
 }

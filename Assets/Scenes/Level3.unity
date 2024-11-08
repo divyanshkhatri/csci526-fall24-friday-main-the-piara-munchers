@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 132888711}
   - component: {fileID: 132888712}
   - component: {fileID: 132888713}
+  - component: {fileID: 132888714}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Finish
@@ -741,6 +742,18 @@ MonoBehaviour:
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
   timerScript: {fileID: 1027719858}
+--- !u!114 &132888714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132888709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &134434931
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,6 +2695,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 583049364}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1455893694}
+  - {fileID: 132888714}
 --- !u!61 &491603856
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7710,6 +7726,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 1720855607}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1455893694}
+  - {fileID: 132888714}
 --- !u!61 &1262890364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7940,6 +7959,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 0}
   totalCollectibles: 0
+  flagColorChangers:
+  - {fileID: 1455893694}
+  - {fileID: 132888714}
 --- !u!61 &1294226283
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8963,6 +8985,7 @@ GameObject:
   - component: {fileID: 1455893691}
   - component: {fileID: 1455893692}
   - component: {fileID: 1455893693}
+  - component: {fileID: 1455893694}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -9054,6 +9077,18 @@ MonoBehaviour:
   nextLevelButton: {fileID: 2002932104}
   firebaseAnalytics: {fileID: 2138173985}
   timerScript: {fileID: 1027719858}
+--- !u!114 &1455893694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455893690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1467123552
 GameObject:
   m_ObjectHideFlags: 0
@@ -10419,6 +10454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 777980393}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1455893694}
+  - {fileID: 132888714}
 --- !u!61 &1715140754
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11176,6 +11214,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 348407438}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1455893694}
+  - {fileID: 132888714}
 --- !u!61 &1829246071
 BoxCollider2D:
   m_ObjectHideFlags: 0

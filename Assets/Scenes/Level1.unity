@@ -2537,6 +2537,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 363420133}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1964903308}
+  - {fileID: 1786400165}
 --- !u!61 &916658845
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4076,6 +4079,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 754584780}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1964903308}
+  - {fileID: 1786400165}
 --- !u!61 &1424025841
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4628,6 +4634,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 237484295}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1964903308}
+  - {fileID: 1786400165}
 --- !u!61 &1653761136
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4666,6 +4675,8 @@ GameObject:
   - component: {fileID: 1786400161}
   - component: {fileID: 1786400162}
   - component: {fileID: 1786400163}
+  - component: {fileID: 1786400165}
+  - component: {fileID: 1786400164}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Finish
@@ -4783,10 +4794,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 435430662}
   playerController: {fileID: 1514624327}
-  timerScript: {fileID: 1053196207}
   nextLevelButton: {fileID: 279112248}
   firebaseAnalytics: {fileID: 1515156100}
-  levelCompleteColor: {r: 1, g: 0, b: 0, a: 1}
+  timerScript: {fileID: 1053196207}
+--- !u!114 &1786400164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786400159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1786400165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786400159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1861109603
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5202,6 +5236,7 @@ GameObject:
   - component: {fileID: 1964903305}
   - component: {fileID: 1964903306}
   - component: {fileID: 1964903307}
+  - component: {fileID: 1964903308}
   m_Layer: 0
   m_Name: Square
   m_TagString: Finish
@@ -5319,10 +5354,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCompletePanel: {fileID: 435430662}
   playerController: {fileID: 1514624327}
-  timerScript: {fileID: 1053196207}
   nextLevelButton: {fileID: 279112248}
   firebaseAnalytics: {fileID: 1515156100}
-  levelCompleteColor: {r: 1, g: 0, b: 0, a: 1}
+  timerScript: {fileID: 1053196207}
+--- !u!114 &1964903308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1964903303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fd4005470cf481cbb78c614b58ae78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1998400491
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5420,6 +5466,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   correspondingUIElement: {fileID: 1207393398}
   totalCollectibles: 4
+  flagColorChangers:
+  - {fileID: 1964903308}
+  - {fileID: 1786400165}
 --- !u!61 &1998400495
 BoxCollider2D:
   m_ObjectHideFlags: 0
