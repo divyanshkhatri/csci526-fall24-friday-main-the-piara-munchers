@@ -21,9 +21,10 @@ public class LazerScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
-        {       
+        {
             playerController.spriteRenderer.color = Color.red;
             playerController.canMove = false;
+            playerController.rb.velocity = Vector2.zero;
             levelFailPanel.SetActive(true);
             Debug.Log("Level fail panel shown");
         }
