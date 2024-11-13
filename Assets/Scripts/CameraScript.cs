@@ -9,7 +9,9 @@ public class CameraScript : MonoBehaviour
     public float shakeDuration = 0.2f;
     public float shakeMagnitude = 0.1f;
 
-    private Vector3 shakeOffset = Vector3.zero; 
+    private Vector3 shakeOffset = Vector3.zero;
+    private Vector3 currentVelocity;
+    private float smoothDampTime = 0.2f;
 
     void LateUpdate()
     {
@@ -28,7 +30,7 @@ public class CameraScript : MonoBehaviour
         float heightOffset = (cameraHeight * heightOffsetPercentage) - 1;
 
         Vector3 desiredPosition = new Vector3(player.position.x + cam.orthographicSize / 2, player.position.y + heightOffset, transform.position.z);
-        Vector3 targetPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        Vector3 targetPosition = Vector3.SmoothDamp(transform.position, desiredPosition, ref currentVelocity, smoothDampTime);
 
         transform.position = targetPosition + shakeOffset;
     }
@@ -45,7 +47,7 @@ public class CameraScript : MonoBehaviour
         while (elapsed < shakeDuration)
         {
             shakeOffset = Random.insideUnitSphere * shakeMagnitude;
-            shakeOffset.z = 0; 
+            shakeOffset.z = 0;
 
             elapsed += Time.deltaTime;
 
