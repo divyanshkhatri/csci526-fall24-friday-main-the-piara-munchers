@@ -13,8 +13,10 @@ public class FlipManager : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
 
-    private readonly Color flipColor = new Color(0.4f, 0.2627f, 0.2627f); 
+    private readonly Color flipColor = new Color(0.537f, 0.925f, 0.671f); // #664343
     private readonly Color defaultColor = Color.white; 
+    private readonly Color defaultBackgroundColor = new Color(0.149f, 0.443f, 0.502f); // #257180
+    private readonly Color flipBackgroundColor = new Color(0.1176f, 0.2627f, 0.2941f); // #1E434B
 
     public static bool IsFlipped
     {
@@ -27,8 +29,12 @@ public class FlipManager : MonoBehaviour
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
         playerSpriteRenderer.color = defaultColor; 
 
+        // Set initial background color
+        Camera.main.backgroundColor = defaultBackgroundColor;
+
         foreach (GameObject obj in flippableObjects)
         {
+            if (obj == null) continue;
             if (obj.CompareTag("Walkable_plain"))
             {
                 SpriteRenderer objSpriteRenderer = obj.GetComponent<SpriteRenderer>();
@@ -81,6 +87,9 @@ public class FlipManager : MonoBehaviour
             playerSpriteRenderer.color = isFlipped ? flipColor : defaultColor;
         }
 
+        // Toggle background color based on flip state
+        Camera.main.backgroundColor = isFlipped ? flipBackgroundColor : defaultBackgroundColor;
+
         foreach (GameObject obj in flippableObjects)
         {
             Debug.Log("Flippable Object: " + obj.name + ", Tag: " + obj.tag);
@@ -113,7 +122,6 @@ public class FlipManager : MonoBehaviour
         SpriteRenderer objSpriteRenderer = obj.GetComponent<SpriteRenderer>();
         if (objSpriteRenderer != null)
         {
-            // Only change the color if it's a walkable plain and if there was an original color
             if (originalColors.ContainsKey(obj))
             {
                 objSpriteRenderer.color = originalColors[obj];
@@ -121,4 +129,3 @@ public class FlipManager : MonoBehaviour
         }
     }
 }
-
