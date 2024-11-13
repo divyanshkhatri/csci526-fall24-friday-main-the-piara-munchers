@@ -9,6 +9,7 @@
 //     private static bool isFlipped = false;
 //     public static event Action OnFlip;
 //     private bool canFlip = true;
+//     private Renderer playerRenderer;
 
 //     public static bool IsFlipped
 //     {
@@ -18,6 +19,8 @@
 //     void Start()
 //     {
 //         PauseManager.OnPause += HandlePause;
+//         playerRenderer = player.GetComponent<Renderer>();
+//         playerRenderer.material.color = Color.white; // Set initial color to white
 //     }
 
 //     void OnDestroy()
@@ -35,10 +38,7 @@
 //         if (canFlip && Input.GetKeyDown(flipKey))
 //         {
 //             ToggleFlip();
-//             if (OnFlip != null)
-//             {
-//                 OnFlip.Invoke();
-//             }
+//             OnFlip?.Invoke();
 //         }
 //     }
 
@@ -46,17 +46,18 @@
 //     {
 //         isFlipped = !isFlipped;
 
+//         // Flip player color
+//         if (playerRenderer != null)
+//         {
+//             playerRenderer.material.color = playerRenderer.material.color == Color.white ? Color.black : Color.white;
+//         }
+
 //         foreach (GameObject obj in flippableObjects)
 //         {
 //             if (obj != player.gameObject)
 //             {
-
 //                 float relativePositionX = obj.transform.position.x - player.position.x;
-
-
 //                 relativePositionX = -relativePositionX;
-
-
 //                 obj.transform.position = new Vector3(player.position.x + relativePositionX, obj.transform.position.y, obj.transform.position.z);
 
 //                 Vector3 scale = obj.transform.localScale;
@@ -67,9 +68,9 @@
 //     }
 // }
 
-
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 public class FlipManager : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class FlipManager : MonoBehaviour
     private static bool isFlipped = false;
     public static event Action OnFlip;
     private bool canFlip = true;
-    private Renderer playerRenderer;
+    private SpriteRenderer playerSpriteRenderer;
+    private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
 
     public static bool IsFlipped
     {
@@ -89,8 +91,21 @@ public class FlipManager : MonoBehaviour
     void Start()
     {
         PauseManager.OnPause += HandlePause;
-        playerRenderer = player.GetComponent<Renderer>();
-        playerRenderer.material.color = Color.white; // Set initial color to white
+        playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
+        playerSpriteRenderer.color = Color.white; // Set initial color to white
+
+        // Store original colors of objects tagged as "Walkable_plain"
+        foreach (GameObject obj in flippableObjects)
+        {
+            if (obj.CompareTag("Walkable_plain"))
+            {
+                SpriteRenderer objSpriteRenderer = obj.GetComponent<SpriteRenderer>();
+                if (objSpriteRenderer != null)
+                {
+                    originalColors[obj] = objSpriteRenderer.color;
+                }
+            }
+        }
     }
 
     void OnDestroy()
@@ -117,15 +132,16 @@ public class FlipManager : MonoBehaviour
         isFlipped = !isFlipped;
 
         // Flip player color
-        if (playerRenderer != null)
+        if (playerSpriteRenderer != null)
         {
-            playerRenderer.material.color = playerRenderer.material.color == Color.white ? Color.black : Color.white;
+            playerSpriteRenderer.color = playerSpriteRenderer.color == Color.white ? Color.black : Color.white;
         }
 
         foreach (GameObject obj in flippableObjects)
         {
             if (obj != player.gameObject)
             {
+                // Flip position and scale for non-player objects
                 float relativePositionX = obj.transform.position.x - player.position.x;
                 relativePositionX = -relativePositionX;
                 obj.transform.position = new Vector3(player.position.x + relativePositionX, obj.transform.position.y, obj.transform.position.z);
@@ -133,6 +149,25 @@ public class FlipManager : MonoBehaviour
                 Vector3 scale = obj.transform.localScale;
                 scale.x *= -1;
                 obj.transform.localScale = scale;
+            }
+
+            // Change color of sprites tagged as "Walkable_plain"
+            if (obj.CompareTag("Walkable_plain"))
+            {
+                SpriteRenderer objSpriteRenderer = obj.GetComponent<SpriteRenderer>();
+                if (objSpriteRenderer != null)
+                {
+                    if (isFlipped)
+                    {
+                        // Change to black when flipped
+                        objSpriteRenderer.color = Color.black;
+                    }
+                    else if (originalColors.ContainsKey(obj))
+                    {
+                        // Revert to the original color when unflipped
+                        objSpriteRenderer.color = originalColors[obj];
+                    }
+                }
             }
         }
     }
