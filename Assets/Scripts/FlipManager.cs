@@ -13,6 +13,9 @@ public class FlipManager : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
 
+    private readonly Color flipColor = new Color(0.4f, 0.2627f, 0.2627f); 
+    private readonly Color defaultColor = Color.white; 
+
     public static bool IsFlipped
     {
         get { return isFlipped; }
@@ -22,7 +25,7 @@ public class FlipManager : MonoBehaviour
     {
         PauseManager.OnPause += HandlePause;
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        playerSpriteRenderer.color = Color.white; 
+        playerSpriteRenderer.color = defaultColor; 
 
         foreach (GameObject obj in flippableObjects)
         {
@@ -72,9 +75,10 @@ public class FlipManager : MonoBehaviour
     {
         isFlipped = !isFlipped;
 
+        // Toggle player color based on flip state
         if (playerSpriteRenderer != null)
         {
-            playerSpriteRenderer.color = playerSpriteRenderer.color == Color.white ? Color.black : Color.white;
+            playerSpriteRenderer.color = isFlipped ? flipColor : defaultColor;
         }
 
         foreach (GameObject obj in flippableObjects)
@@ -109,16 +113,12 @@ public class FlipManager : MonoBehaviour
         SpriteRenderer objSpriteRenderer = obj.GetComponent<SpriteRenderer>();
         if (objSpriteRenderer != null)
         {
-            if (isFlipped)
-            {
-                objSpriteRenderer.color = Color.black;
-            }
-            else if (originalColors.ContainsKey(obj))
+            // Only change the color if it's a walkable plain and if there was an original color
+            if (originalColors.ContainsKey(obj))
             {
                 objSpriteRenderer.color = originalColors[obj];
             }
         }
     }
 }
-
 
