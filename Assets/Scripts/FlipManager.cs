@@ -22,7 +22,7 @@ public class FlipManager : MonoBehaviour
     {
         PauseManager.OnPause += HandlePause;
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        playerSpriteRenderer.color = Color.white; 
+        playerSpriteRenderer.color = Color.white;
 
         foreach (GameObject obj in flippableObjects)
         {
