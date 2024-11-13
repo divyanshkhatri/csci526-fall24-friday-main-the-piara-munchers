@@ -4,6 +4,7 @@ using TMPro;
 public class JumpTutorial : MonoBehaviour
 {
     public TextMeshProUGUI tutorialText;
+    public GameObject backgroundImage;
 
     void Start()
     {
@@ -13,7 +14,12 @@ public class JumpTutorial : MonoBehaviour
             return;
         }
         tutorialText.enabled = false;
-        
+
+        if (backgroundImage != null)
+        {
+            backgroundImage.SetActive(false);
+        }
+
         if (GetComponent<Rigidbody2D>() == null)
         {
             gameObject.AddComponent<Rigidbody2D>().isKinematic = true;
@@ -26,7 +32,7 @@ public class JumpTutorial : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && collision.transform.position.y >= -50 && collision.transform.position.y <= -41)
         {
             foreach (ContactPoint2D contact in collision.contacts)
             {
@@ -35,6 +41,10 @@ public class JumpTutorial : MonoBehaviour
                 {
                     tutorialText.text = "Press Space to Jump";
                     tutorialText.enabled = true;
+                    if (backgroundImage != null)
+                    {
+                        backgroundImage.SetActive(true);
+                    }
                     return;
                 }
             }
@@ -46,6 +56,10 @@ public class JumpTutorial : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             tutorialText.enabled = false;
+            if (backgroundImage != null)
+            {
+                backgroundImage.SetActive(false);
+            }
         }
     }
 }
