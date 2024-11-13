@@ -10,7 +10,7 @@ public class ShowFlipMessage : MonoBehaviour
     public Image backgroundImage;
     void Start()
     {
-
+        // Ensure the GameObject has a Collider2D component
         if (GetComponent<Collider2D>() == null)
         {
             gameObject.AddComponent<BoxCollider2D>();
