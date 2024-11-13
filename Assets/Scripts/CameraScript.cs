@@ -28,7 +28,8 @@ public class CameraScript : MonoBehaviour
         float heightOffset = cameraHeight * heightOffsetPercentage;
 
 
-        Vector3 desiredPosition = new Vector3(player.position.x, player.position.y + heightOffset, transform.position.z);
+        // Adjust the desired position to keep the ball in the frame
+        Vector3 desiredPosition = new Vector3(player.position.x + cam.orthographicSize / 2, player.position.y + heightOffset, transform.position.z);
 
 
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);

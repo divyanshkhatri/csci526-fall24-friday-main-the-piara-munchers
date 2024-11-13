@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Button restartButton;
     private bool hasTriggeredFail = false;
     public TimerScript timerScript;
+    public List<Image> hearts;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         hasTriggeredFail = false;
         PauseManager.OnPause += HandlePause;
+        InitializeHearts();
     }
 
     void OnDestroy()
@@ -75,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
             if (hitCount < 3)
             {
                 hitCount++;
+                UpdateHearts();
             }
 
             Debug.Log("Hit count: " + hitCount);
@@ -134,6 +137,29 @@ public class PlayerMovement : MonoBehaviour
     void HandlePause(bool isPaused)
     {
         canMove = !isPaused;
+    }
+
+    void InitializeHearts()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            hearts[i].enabled = true;
+        }
+    }
+
+    void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            if (i < 3 - hitCount)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+            {
+                hearts[i].enabled = false;
+            }
+        }
     }
 }
 
