@@ -14,7 +14,7 @@ public class FlipManager : MonoBehaviour
     private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
 
     private readonly Color flipColor = new Color(0.537f, 0.925f, 0.671f); // #664343
-    private readonly Color defaultColor = Color.white; 
+    private readonly Color defaultColor = Color.white;
     private readonly Color defaultBackgroundColor = new Color(0.149f, 0.443f, 0.502f); // #257180
     private readonly Color flipBackgroundColor = new Color(0.1176f, 0.2627f, 0.2941f); // #1E434B
 
@@ -25,9 +25,10 @@ public class FlipManager : MonoBehaviour
 
     void Start()
     {
+        isFlipped = false;
         PauseManager.OnPause += HandlePause;
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
-        playerSpriteRenderer.color = defaultColor; 
+        playerSpriteRenderer.color = defaultColor;
 
         // Set initial background color
         Camera.main.backgroundColor = defaultBackgroundColor;
