@@ -1406,8 +1406,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274656253}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3607, y: -2.827992, z: 0.15542884}
-  m_LocalScale: {x: 42.523186, y: 5.9726, z: 1}
+  m_LocalPosition: {x: -0.203, y: -2.827992, z: 0.15542884}
+  m_LocalScale: {x: 42.83553, y: 5.9726, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 478495335}
@@ -4869,7 +4869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788139429}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.88, y: 8.690002, z: 0}
+  m_LocalPosition: {x: -0.9, y: 8.690002, z: 0}
   m_LocalScale: {x: 0.53751, y: 0.53751, z: 0.89584}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5583,7 +5583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.7529412}
+  m_Color: {r: 0, g: 0.68235296, b: 0.9372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9418,9 +9418,7 @@ MonoBehaviour:
   canMove: 1
   restartButton: {fileID: 1175405545}
   timerScript: {fileID: 1426658379}
-  hearts:
-  - {fileID: 1511462250}
-  - {fileID: 1501696487}
+  hearts: []
 --- !u!50 &1867447687
 Rigidbody2D:
   serializedVersion: 4
@@ -9773,7 +9771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.69411767}
+  m_Color: {r: 0, g: 0.68235296, b: 0.9372549, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
