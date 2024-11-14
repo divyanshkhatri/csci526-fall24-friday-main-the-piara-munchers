@@ -4965,6 +4965,8 @@ MonoBehaviour:
   - {fileID: 324230282}
   - {fileID: 998937721}
   - {fileID: 241645517}
+  flipCount: 0
+  firebaseAnalytics: {fileID: 1515156100}
 --- !u!50 &1514624328
 Rigidbody2D:
   serializedVersion: 4
