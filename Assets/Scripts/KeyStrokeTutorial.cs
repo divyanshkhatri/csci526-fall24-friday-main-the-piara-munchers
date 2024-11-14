@@ -51,7 +51,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                         {
                             tutorialText.text = "Seems like the world flipped, press left key again to flip";
                             tutorialText.gameObject.SetActive(true);
-                            StartCoroutine(HideTextAfterDelay(2));
+                            StartCoroutine(HideTextAfterDelay(3));
                         }
                         if (background != null)
                         {
@@ -65,7 +65,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                         {
                             tutorialText.text = "Great! You've flipped the world back to normal";
                             tutorialText.gameObject.SetActive(true);
-                            StartCoroutine(HideTextAfterDelay(2));
+                            StartCoroutine(HideTextAfterDelay(3));
                         }
                         if (background != null)
                         {
@@ -78,7 +78,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                 if (Input.GetKey(KeyCode.RightArrow) && tutorialTeleport.currentLevel == 0)
                 {
                     rightKeyPressTime += Time.deltaTime;
-                    if (rightKeyPressTime > 1f)
+                    if (rightKeyPressTime > 0.5f)
                     {
                         if (tutorialText != null)
                         {

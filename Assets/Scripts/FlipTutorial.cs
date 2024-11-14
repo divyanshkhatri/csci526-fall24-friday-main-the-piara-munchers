@@ -9,20 +9,32 @@ public class FlipTutorial : MonoBehaviour
     public GameObject messageBackground;
     private bool hasFlipped = false;
 
-    void Update()
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (player.transform.position.y >= -80 && player.transform.position.y <= -71)
+        if (collision.collider.CompareTag("Player"))
         {
             if (!hasFlipped)
             {
                 ShowMessage("Flip the world to traverse.", 450);
-                if (PlayerHasFlipped())
-                {
-                    hasFlipped = true;
-                    ShowMessage("Move forward to get to the flag", 550);
-                    StartCoroutine(HideMessageAfterDelay(3f));
-                }
+
+                // Wait for player input in Update
+                StartCoroutine(WaitForFlipInput());
             }
+        }
+    }
+
+    private IEnumerator WaitForFlipInput()
+    {
+        while (!hasFlipped)
+        {
+            if (PlayerHasFlipped())
+            {
+                hasFlipped = true;
+                ShowMessage("Move forward to get to the flag", 550);
+                yield return new WaitForSeconds(3f);
+                HideMessage();
+            }
+            yield return null;
         }
     }
 
@@ -33,18 +45,16 @@ public class FlipTutorial : MonoBehaviour
         messageBackground.SetActive(true);
         RectTransform rt = messageBackground.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(backgroundWidth, rt.sizeDelta.y);
-        StartCoroutine(HideMessageAfterDelay(3f));
+    }
+
+    private void HideMessage()
+    {
+        messageText.gameObject.SetActive(false);
+        messageBackground.SetActive(false);
     }
 
     private bool PlayerHasFlipped()
     {
         return Input.GetKeyDown(KeyCode.LeftArrow);
-    }
-
-    private IEnumerator HideMessageAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        messageText.gameObject.SetActive(false);
-        messageBackground.SetActive(false);
     }
 }

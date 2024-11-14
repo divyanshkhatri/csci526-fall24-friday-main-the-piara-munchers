@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Lazerblinker : MonoBehaviour
+public class LazerBlinkerTutorial : MonoBehaviour
 {
     public GameObject featureToToggle;
     private bool isFeatureEnabled = true;
@@ -35,7 +35,7 @@ public class Lazerblinker : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
 
             if (isPaused)
             {

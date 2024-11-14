@@ -8,9 +8,9 @@ public class ShowFlipMessage : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
     public Image backgroundImage;
+    public bool collisionOccured = false;
     void Start()
     {
-        // Ensure the GameObject has a Collider2D component
         if (GetComponent<Collider2D>() == null)
         {
             gameObject.AddComponent<BoxCollider2D>();
@@ -23,7 +23,6 @@ public class ShowFlipMessage : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -31,10 +30,11 @@ public class ShowFlipMessage : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (!collisionOccured && collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Collision detected");
             StartCoroutine(ShowMessage());
+            collisionOccured = true;
         }
     }
 
