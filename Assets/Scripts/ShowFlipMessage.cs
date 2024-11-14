@@ -38,7 +38,7 @@ public class ShowFlipMessage : MonoBehaviour
 
     void ShowMessage()
     {
-        messageText.text = "Guess, you should flip the world!";
+        messageText.text = "Hitting the lazer kills you instantly!";
         backgroundImage.enabled = true;
         messageText.enabled = true;
         StartCoroutine(HideMessageAfterDelay());
