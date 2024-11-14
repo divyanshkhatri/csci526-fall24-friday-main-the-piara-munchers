@@ -1476,7 +1476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToBreak: 0.5
-  respawnTime: 0.2
+  respawnTime: 2
   referenceObject: {fileID: 1913168602}
 --- !u!1 &363870278
 GameObject:
@@ -3471,7 +3471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToBreak: 0.5
-  respawnTime: 1
+  respawnTime: 2
   referenceObject: {fileID: 1913168602}
 --- !u!1001 &817582551
 PrefabInstance:
@@ -6265,10 +6265,6 @@ MonoBehaviour:
   - {fileID: 1307889814}
   - {fileID: 101546848}
   - {fileID: 1594342505}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 348150109}
-  - {fileID: 815956409}
   flipKey: 276
 --- !u!4 &1387667634
 Transform:
