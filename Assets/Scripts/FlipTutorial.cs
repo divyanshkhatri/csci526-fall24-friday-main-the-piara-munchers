@@ -11,13 +11,14 @@ public class FlipTutorial : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Collision detected with: " + collision.collider.name);
         if (collision.collider.CompareTag("Player"))
         {
+            Debug.Log("Collision detected with Player");
             if (!hasFlipped)
             {
-                ShowMessage("Flip the world to traverse.", 450);
+                ShowMessage("Flip the world to traverse.", 650);
 
-                // Wait for player input in Update
                 StartCoroutine(WaitForFlipInput());
             }
         }
@@ -30,7 +31,7 @@ public class FlipTutorial : MonoBehaviour
             if (PlayerHasFlipped())
             {
                 hasFlipped = true;
-                ShowMessage("Move forward to get to the flag", 550);
+                ShowMessage("Move forward to get to the flag", 650);
                 yield return new WaitForSeconds(3f);
                 HideMessage();
             }
@@ -41,6 +42,7 @@ public class FlipTutorial : MonoBehaviour
     private void ShowMessage(string message, float backgroundWidth = 0)
     {
         messageText.text = message;
+        messageText.alignment = TextAlignmentOptions.Center;
         messageText.gameObject.SetActive(true);
         messageBackground.SetActive(true);
         RectTransform rt = messageBackground.GetComponent<RectTransform>();

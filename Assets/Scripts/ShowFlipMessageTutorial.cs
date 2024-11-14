@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ShowFlipMessage : MonoBehaviour
+public class ShowFlipMessageTutorial : MonoBehaviour
 {
     public TextMeshProUGUI messageText;
     public Image backgroundImage;
@@ -22,6 +22,8 @@ public class ShowFlipMessage : MonoBehaviour
             Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
             rb.isKinematic = true;
         }
+
+        // Initially, hide the message text and background image
         messageText.enabled = false;
         backgroundImage.enabled = false;
     }
