@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     public Button restartButton;
     private bool hasTriggeredFail = false;
     public TimerScript timerScript;
+    public List<Image> hearts;
+    private CameraScript cameraScript;
 
     void Start()
     {
@@ -26,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         hasTriggeredFail = false;
         PauseManager.OnPause += HandlePause;
+        InitializeHearts();
+
+        cameraScript = Camera.main.GetComponent<CameraScript>();
     }
 
     void OnDestroy()
@@ -53,16 +58,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
-
     }
-
 
     void FixedUpdate()
     {
-
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-
-
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -75,37 +75,20 @@ public class PlayerMovement : MonoBehaviour
             if (hitCount < 3)
             {
                 hitCount++;
+                UpdateHearts();
+                cameraScript?.TriggerShake();
             }
 
             Debug.Log("Hit count: " + hitCount);
 
-            if (hitCount == 1)
-            {
-                spriteRenderer.color = Color.magenta;
-            }
-            else if (hitCount == 2)
-            {
-                spriteRenderer.color = new Color(0.8f, 0.0f, 0.4f);
-            }
-            else if (hitCount >= 3 && !hasTriggeredFail)
+            if (hitCount >= 3 && !hasTriggeredFail)
             {
                 Debug.Log("Hit count reached 3, stopping timer.");
-                if (timerScript != null)
-                {
-                    Debug.Log("Calling StopTimer from PlayerMovement.");
-                    timerScript.StopTimer();
-                }
-                else
-                {
-                    Debug.LogError("TimerScript reference is missing in PlayerMovement.");
-                }
+                timerScript?.StopTimer();
                 hasTriggeredFail = true;
                 hitCount = 3;
                 canMove = false;
-                if (levelFailPanel != null)
-                {
-                    levelFailPanel.SetActive(true);
-                }
+                levelFailPanel?.SetActive(true);
                 if (SessionManager.Instance != null)
                 {
                     Checkpoint closestCheckpoint = SessionManager.Instance.GetClosestUpcomingCheckpoint(transform.position);
@@ -118,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+
         if (other.gameObject.CompareTag("Finish") && Collectible.collectiblesRemaining == 0)
         {
             canMove = false;
@@ -135,6 +119,20 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = !isPaused;
     }
+
+    void InitializeHearts()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            hearts[i].enabled = true;
+        }
+    }
+
+    void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            hearts[i].enabled = i < 3 - hitCount;
+        }
+    }
 }
-
-

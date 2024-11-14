@@ -12,6 +12,7 @@ TagManager:
   - Checkpoint
   - Movingplatform
   - MovingPlatform
+  - Walkable_plain
   layers:
   - Default
   - TransparentFX
