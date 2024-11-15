@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public TimerScript timerScript;
     public List<Image> hearts;
     private CameraScript cameraScript;
+    public int flipCount = 0;
+    public FireBaseAnalytics firebaseAnalytics;
 
     void Start()
     {
@@ -29,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
         hasTriggeredFail = false;
         PauseManager.OnPause += HandlePause;
         InitializeHearts();
+        FlipManager.OnFlip += HandleFlip;
 
         cameraScript = Camera.main.GetComponent<CameraScript>();
     }
@@ -36,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     void OnDestroy()
     {
         PauseManager.OnPause -= HandlePause;
+        FlipManager.OnFlip -= HandleFlip;
     }
 
     void Update()
@@ -99,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
                     }
                     SessionManager.Instance.PostSessionDataToFireBase();
                 }
+                firebaseAnalytics.PostToFireBase(false);
             }
         }
 
@@ -134,5 +139,10 @@ public class PlayerMovement : MonoBehaviour
         {
             hearts[i].enabled = i < 3 - hitCount;
         }
+    }
+
+    void HandleFlip()
+    {
+        flipCount++;
     }
 }

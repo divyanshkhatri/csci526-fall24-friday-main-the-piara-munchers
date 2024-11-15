@@ -17,7 +17,7 @@ public class FlipTutorial : MonoBehaviour
             Debug.Log("Collision detected with Player");
             if (!hasFlipped)
             {
-                ShowMessage("Flip the world to traverse.", 650);
+                ShowMessage("Press left key to flip the world!", 650);
 
                 StartCoroutine(WaitForFlipInput());
             }

@@ -21,7 +21,7 @@ public class FireBaseAnalytics : MonoBehaviour
 
     }
 
-    public void PostToFireBase()
+    public void PostToFireBase(bool finish)
     {
         EventData myEvent = new EventData
         {
@@ -29,7 +29,9 @@ public class FireBaseAnalytics : MonoBehaviour
             level_index = SceneManager.GetActiveScene().buildIndex,
             completion_time = completionTime,
             hit_count = playerController.hitCount,
-            lives_remaining = 3 - playerController.hitCount
+            lives_remaining = 3 - playerController.hitCount,
+            flips = playerController.flipCount,
+            finish = finish
         };
 
         string json = JsonUtility.ToJson(myEvent);

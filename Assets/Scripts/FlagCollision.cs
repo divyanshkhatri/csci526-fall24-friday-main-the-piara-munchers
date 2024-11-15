@@ -43,7 +43,7 @@ public class FlagCollision : MonoBehaviour
             if (firebaseAnalytics != null)
             {
                 firebaseAnalytics.completionTime = Time.time - startTime;
-                firebaseAnalytics.PostToFireBase();
+                firebaseAnalytics.PostToFireBase(true);
                 Debug.Log("Posted to Firebase");
             }
             else
