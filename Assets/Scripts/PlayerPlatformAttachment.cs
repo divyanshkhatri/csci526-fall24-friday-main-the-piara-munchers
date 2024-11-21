@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class PlayerPlatformAttachment : MonoBehaviour
 {
+    private Transform movingPlatform;
+    private Vector3 previousPlatformPosition;
+    private bool isOnPlatform = false;
+    private Vector2 platformVelocity;
+
     private Rigidbody2D rb;
-    private bool isOnPlatform;
-    private Transform platformTransform;
-    private Vector3 lastPlatformPosition;
 
     private void Start()
     {
@@ -16,19 +18,9 @@ public class PlayerPlatformAttachment : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
+            movingPlatform = collision.transform;
+            previousPlatformPosition = movingPlatform.position;
             isOnPlatform = true;
-            platformTransform = collision.transform;
-            lastPlatformPosition = platformTransform.position;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (isOnPlatform)
-        {
-            Vector3 platformDelta = platformTransform.position - lastPlatformPosition;
-            rb.velocity += new Vector2(platformDelta.x, platformDelta.y) / Time.fixedDeltaTime;
-            lastPlatformPosition = platformTransform.position;
         }
     }
 
@@ -36,8 +28,31 @@ public class PlayerPlatformAttachment : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
+            movingPlatform = null;
             isOnPlatform = false;
-            platformTransform = null;
+            platformVelocity = Vector2.zero;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (isOnPlatform && movingPlatform != null)
+        {
+            Vector3 platformMovement = movingPlatform.position - previousPlatformPosition;
+            platformVelocity = platformMovement / Time.fixedDeltaTime;
+            previousPlatformPosition = movingPlatform.position;
+        }
+        else
+        {
+            platformVelocity = Vector2.zero;
+        }
+    }
+
+    private void Update()
+    {
+        if (isOnPlatform && movingPlatform != null)
+        {
+            rb.velocity += platformVelocity;
         }
     }
 }
