@@ -2,35 +2,41 @@ using UnityEngine;
 
 public class PlayerPlatformAttachment : MonoBehaviour
 {
+    private Rigidbody2D rb;
+    private bool isOnPlatform;
     private Transform platformTransform;
     private Vector3 lastPlatformPosition;
 
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the player is on a moving platform
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
+            isOnPlatform = true;
             platformTransform = collision.transform;
             lastPlatformPosition = platformTransform.position;
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void FixedUpdate()
     {
-        // Update the player’s position based on the platform's movement
-        if (platformTransform != null)
+        if (isOnPlatform)
         {
-            Vector3 platformMovement = platformTransform.position - lastPlatformPosition;
-            transform.position += platformMovement;
+            Vector3 platformDelta = platformTransform.position - lastPlatformPosition;
+            rb.velocity += new Vector2(platformDelta.x, platformDelta.y) / Time.fixedDeltaTime;
             lastPlatformPosition = platformTransform.position;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // Reset platform tracking when leaving the platform
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
+            isOnPlatform = false;
             platformTransform = null;
         }
     }

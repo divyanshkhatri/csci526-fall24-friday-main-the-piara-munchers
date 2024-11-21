@@ -10334,7 +10334,6 @@ MonoBehaviour:
   player: {fileID: 656991044}
   flippableObjects:
   - {fileID: 586456111}
-  - {fileID: 656991039}
   - {fileID: 2053035527}
   - {fileID: 1271728156}
   - {fileID: 81676595}
@@ -10350,6 +10349,7 @@ MonoBehaviour:
   - {fileID: 1189011910}
   - {fileID: 323873288}
   - {fileID: 67766890}
+  - {fileID: 656991039}
   flipKey: 276
 --- !u!4 &1231185435
 Transform:
