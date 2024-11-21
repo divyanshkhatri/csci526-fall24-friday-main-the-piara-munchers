@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -12,27 +11,34 @@ public class ShowFlipMessage : MonoBehaviour
 
     void Start()
     {
-        if (GetComponent<Collider2D>() == null)
+        // Ensure the object has a trigger collider
+        BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        if (collider == null)
         {
-            gameObject.AddComponent<BoxCollider2D>();
+            collider = gameObject.AddComponent<BoxCollider2D>();
         }
+        collider.isTrigger = true; // Make it a trigger
 
+        // Ensure the object has a Rigidbody2D
         if (GetComponent<Rigidbody2D>() == null)
         {
             Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
-            rb.isKinematic = true;
+            rb.isKinematic = true; // Kinematic to avoid physics-based interactions
         }
+
+        // Initially hide the message
         messageText.enabled = false;
         backgroundImage.enabled = false;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // Use trigger detection
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (!collisionOccured && collision.gameObject.CompareTag("Player"))
+        if (!collisionOccured && other.CompareTag("Player"))
         {
-            Debug.Log("Collision detected");
+            Debug.Log("Player triggered the message display");
             ShowMessage();
-            collisionOccured = true;
+            collisionOccured = true; // Prevent repeat triggering
         }
     }
 

@@ -8840,7 +8840,6 @@ GameObject:
   - component: {fileID: 1605462594}
   - component: {fileID: 1605462592}
   - component: {fileID: 1605462595}
-  - component: {fileID: 1605462596}
   m_Layer: 0
   m_Name: lazer
   m_TagString: Untagged
@@ -8959,21 +8958,6 @@ MonoBehaviour:
   hideuiElements:
   - {fileID: 1530651520}
   currentLevel: 0
---- !u!114 &1605462596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605462590}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3b378a046534d98a263b19b1ff8143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messageText: {fileID: 475507932}
-  backgroundImage: {fileID: 1726343529}
-  collisionOccured: 0
 --- !u!1 &1671806585
 GameObject:
   m_ObjectHideFlags: 0
