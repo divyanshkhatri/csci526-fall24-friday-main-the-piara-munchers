@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class ClockRotation : MonoBehaviour
 {
-    public float rotationSpeed = 200f; // Speed of rotation
-    public float waitTime = 1f; // Wait time between rotations
-    private bool isRotating = false; // To control the rotation process
-    private Coroutine rotationCoroutine; // Add this line
+    public float rotationSpeed = 200f;
+    public float waitTime = 1f;
+    private bool isRotating = false;
+    private Coroutine rotationCoroutine;
 
     void Update()
     {
         if (!isRotating)
         {
-            rotationCoroutine = StartCoroutine(RotateHourglass()); // Modify this line
+            rotationCoroutine = StartCoroutine(RotateHourglass());
         }
     }
 
@@ -20,42 +20,45 @@ public class ClockRotation : MonoBehaviour
     {
         isRotating = true;
 
-        // Rotate 180 degrees
         yield return RotateToAngle(transform.eulerAngles.z + 180f);
 
-        // Wait for 1 second
         yield return new WaitForSeconds(waitTime);
 
-        // Rotate back 180 degrees
         yield return RotateToAngle(transform.eulerAngles.z - 180f);
 
-        // Wait for 1 second
         yield return new WaitForSeconds(waitTime);
 
-        isRotating = false; // Allow another rotation cycle to start
+        isRotating = false;
     }
 
     IEnumerator RotateToAngle(float targetAngle)
     {
-        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, targetAngle)) > 0.1f)
+        float currentAngle = transform.eulerAngles.z;
+        float deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+
+        while (Mathf.Abs(deltaAngle) > 0.1f)
         {
             float step = rotationSpeed * Time.deltaTime;
-            float direction = Mathf.Sign(Mathf.DeltaAngle(transform.eulerAngles.z, targetAngle));
-            transform.Rotate(0, 0, step * direction);
-            yield return null; // Wait for the next frame
+            step = Mathf.Min(step, Mathf.Abs(deltaAngle));
+            float direction = Mathf.Sign(deltaAngle);
+
+            currentAngle += step * direction;
+            transform.rotation = Quaternion.Euler(0, 0, currentAngle);
+
+            deltaAngle = Mathf.DeltaAngle(currentAngle, targetAngle);
+            yield return null;
         }
 
-        // Snap to the target angle to avoid overshooting
-        transform.eulerAngles = new Vector3(0, 0, targetAngle);
+        transform.rotation = Quaternion.Euler(0, 0, targetAngle);
     }
 
     public void StopRotation()
     {
         if (rotationCoroutine != null)
         {
-            StopCoroutine(rotationCoroutine); // Add this line
-            rotationCoroutine = null; // Add this line
+            StopCoroutine(rotationCoroutine);
+            rotationCoroutine = null;
         }
-        isRotating = true; // This will stop the rotation process
+        isRotating = false;
     }
 }
