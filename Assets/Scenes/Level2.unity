@@ -1617,7 +1617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 484614615}
-  remainingTime: 45
+  remainingTime: 140
   levelFailPanel: {fileID: 2069278720}
   playerController: {fileID: 1036887043}
 --- !u!1001 &402781655
@@ -4559,7 +4559,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1036887038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.86, y: -3.09, z: 0}
+  m_LocalPosition: {x: -16.878, y: -3.241, z: 0}
   m_LocalScale: {x: 0.7358, y: 0.7358, z: 0.7358}
   m_ConstrainProportionsScale: 0
   m_Children:
