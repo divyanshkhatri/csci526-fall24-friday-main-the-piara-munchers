@@ -34,6 +34,16 @@ public class PlayerPlatformAttachment : MonoBehaviour
         }
     }
 
+    public void FlipPlayerPositionRelativeToPlatform()
+    {
+        if (isOnPlatform && movingPlatform != null)
+        {
+            Vector3 relativePosition = transform.position - movingPlatform.position;
+            relativePosition.x = -relativePosition.x; // Flip the horizontal relative position
+            transform.position = movingPlatform.position + relativePosition;
+        }
+    }
+
     private void FixedUpdate()
     {
         if (isOnPlatform && movingPlatform != null)

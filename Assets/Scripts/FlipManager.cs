@@ -82,6 +82,12 @@ public class FlipManager : MonoBehaviour
     {
         isFlipped = !isFlipped;
 
+        PlayerPlatformAttachment playerAttachment = player.GetComponent<PlayerPlatformAttachment>();
+        if (playerAttachment != null)
+        {
+            playerAttachment.FlipPlayerPositionRelativeToPlatform();
+        }
+
         // Toggle player color based on flip state
         if (playerSpriteRenderer != null)
         {

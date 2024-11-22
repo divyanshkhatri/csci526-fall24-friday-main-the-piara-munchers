@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"D:/CSCI/Unity/build/beta2.0;D:/CSCI/Unity/build/beta1.0;D:/CSCI/Unity/build/alpha1.10;C:/Users/Aditya/Desktop/GameDev/alpha1.05/alpha1.05/Build/WebGL;C:/Users/Aditya/Desktop/GameDev/alpha1.07/alpha1.07/WebGL Builds;D:/CSCI/Unity/build/alpha1.02;D:/CSCI/Unity/Project/alpha1.02/WebGL Builds;;;\"}"
+                "value": "{\"m_Value\":\"D:/CSCI/Unity/build/gold1.0;D:/CSCI/Unity/build/beta2.0;D:/CSCI/Unity/build/beta1.0;D:/CSCI/Unity/build/alpha1.10;C:/Users/Aditya/Desktop/GameDev/alpha1.05/alpha1.05/Build/WebGL;C:/Users/Aditya/Desktop/GameDev/alpha1.07/alpha1.07/WebGL Builds;D:/CSCI/Unity/build/alpha1.02;D:/CSCI/Unity/Project/alpha1.02/WebGL Builds;;\"}"
             }
         ]
     }
