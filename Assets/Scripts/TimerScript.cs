@@ -13,6 +13,7 @@ public class TimerScript : MonoBehaviour
     public PlayerMovement playerController;
     private bool isTimerStopped = false;
     private bool isPaused = false;
+    public ClockRotation clockRotation;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class TimerScript : MonoBehaviour
             timerText.color = Color.red;
             levelFailPanel.SetActive(true);
             playerController.canMove = false;
+            clockRotation?.StopRotation();
             SessionManager.Instance.PostSessionDataToFireBase();
         }
 

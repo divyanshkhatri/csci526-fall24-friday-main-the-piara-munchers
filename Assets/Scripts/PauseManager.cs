@@ -12,6 +12,8 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenuCanvas;
     public Button playButton;
     public Button mainMenuButton;
+    public ClockRotation clockRotation;
+    public Button pauseButton;
 
     void Start()
     {
@@ -40,6 +42,14 @@ public class PauseManager : MonoBehaviour
         } else {
           Debug.LogError("mainMenuButton is not assigned in the Inspector.");
         }
+
+        if (pauseButton != null)
+        {
+            pauseButton.onClick.AddListener(TogglePause);
+            pauseButton.interactable = true;
+        } else {
+          Debug.LogError("pauseButton is not assigned in the Inspector.");
+        }
     }
 
     void Update()
@@ -58,6 +68,10 @@ public class PauseManager : MonoBehaviour
         {
             pauseMenuCanvas.SetActive(isPaused);
         }
+        if (clockRotation != null)
+        {
+            clockRotation.enabled = !isPaused;
+        }
         if (OnPause != null)
         {
             OnPause.Invoke(isPaused);
@@ -71,6 +85,10 @@ public class PauseManager : MonoBehaviour
         if (pauseMenuCanvas != null)
         {
             pauseMenuCanvas.SetActive(false);
+        }
+        if (clockRotation != null)
+        {
+            clockRotation.enabled = true;
         }
         if (OnPause != null)
         {
@@ -92,6 +110,10 @@ public class PauseManager : MonoBehaviour
         if (pauseMenuCanvas != null)
         {
             pauseMenuCanvas.SetActive(false);
+        }
+        if (clockRotation != null)
+        {
+            clockRotation.enabled = true;
         }
         if (OnPause != null)
         {

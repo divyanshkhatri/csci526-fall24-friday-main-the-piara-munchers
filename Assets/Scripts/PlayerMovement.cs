@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform originalParent;
     private bool isOnPlatform = false;
     private Transform currentPlatform;
+    public ClockRotation clockRotation; // Add this line
 
     void Start()
     {
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
         cameraScript = Camera.main.GetComponent<CameraScript>();
         originalParent = transform.parent;
+        clockRotation = FindObjectOfType<ClockRotation>(); // Add this line
     }
 
     void OnDestroy()
@@ -108,12 +110,14 @@ public class PlayerMovement : MonoBehaviour
                     SessionManager.Instance.PostSessionDataToFireBase();
                 }
                 firebaseAnalytics.PostToFireBase(false);
+                clockRotation?.StopRotation(); // Add this line
             }
         }
 
         if (other.gameObject.CompareTag("Finish") && Collectible.collectiblesRemaining == 0)
         {
             canMove = false;
+            clockRotation?.StopRotation(); // Add this line
         }
     }
 
