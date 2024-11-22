@@ -23,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
     private CameraScript cameraScript;
     public int flipCount = 0;
     public FireBaseAnalytics firebaseAnalytics;
+    private Transform originalParent;
+    private bool isOnPlatform = false;
+    private Transform currentPlatform;
 
     void Start()
     {
@@ -34,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         FlipManager.OnFlip += HandleFlip;
 
         cameraScript = Camera.main.GetComponent<CameraScript>();
+        originalParent = transform.parent;
     }
 
     void OnDestroy()
@@ -55,11 +59,11 @@ public class PlayerMovement : MonoBehaviour
         {
             moveInput = 0;
         }
-
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+            transform.SetParent(originalParent);
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
@@ -113,6 +117,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(collision.transform);
+            isOnPlatform = true;
+            currentPlatform = collision.transform;
+            rb.interpolation = RigidbodyInterpolation2D.None;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            transform.SetParent(originalParent);
+            isOnPlatform = false;
+            currentPlatform = null;
+            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
+        }
+    }
+
     public void RestartScene()
     {
         hasTriggeredFail = false;
@@ -144,5 +170,15 @@ public class PlayerMovement : MonoBehaviour
     void HandleFlip()
     {
         flipCount++;
+    }
+
+    public bool IsOnPlatform()
+    {
+        return isOnPlatform;
+    }
+
+    public Transform GetCurrentPlatform()
+    {
+        return currentPlatform;
     }
 }

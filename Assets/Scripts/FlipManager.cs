@@ -82,25 +82,18 @@ public class FlipManager : MonoBehaviour
     {
         isFlipped = !isFlipped;
 
-        PlayerPlatformAttachment playerAttachment = player.GetComponent<PlayerPlatformAttachment>();
-        if (playerAttachment != null)
-        {
-            playerAttachment.FlipPlayerPositionRelativeToPlatform();
-        }
+        PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+        bool isOnPlatform = playerMovement != null && playerMovement.IsOnPlatform();
+        Transform currentPlatform = isOnPlatform ? playerMovement.GetCurrentPlatform() : null;
 
-        // Toggle player color based on flip state
-        if (playerSpriteRenderer != null)
+        Vector3 relativePosition = Vector3.zero;
+        if (isOnPlatform && currentPlatform != null)
         {
-            playerSpriteRenderer.color = isFlipped ? flipColor : defaultColor;
+            relativePosition = player.position - currentPlatform.position;
         }
-
-        // Toggle background color based on flip state
-        Camera.main.backgroundColor = isFlipped ? flipBackgroundColor : defaultBackgroundColor;
 
         foreach (GameObject obj in flippableObjects)
         {
-            Debug.Log("Flippable Object: " + obj.name + ", Tag: " + obj.tag);
-
             if (obj != player.gameObject)
             {
                 float relativePositionX = obj.transform.position.x - player.position.x;
@@ -122,6 +115,18 @@ public class FlipManager : MonoBehaviour
                 }
             }
         }
+
+        if (isOnPlatform && currentPlatform != null)
+        {
+            relativePosition.x = -relativePosition.x;
+            player.position = currentPlatform.position + relativePosition;
+        }
+
+        if (playerSpriteRenderer != null)
+        {
+            playerSpriteRenderer.color = isFlipped ? flipColor : defaultColor;
+        }
+        Camera.main.backgroundColor = isFlipped ? flipBackgroundColor : defaultBackgroundColor;
     }
 
     private void HandleWalkablePlain(GameObject obj)
