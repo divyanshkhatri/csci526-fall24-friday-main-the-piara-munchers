@@ -30,7 +30,6 @@ public class FlipManager : MonoBehaviour
         playerSpriteRenderer = player.GetComponent<SpriteRenderer>();
         playerSpriteRenderer.color = defaultColor;
 
-        // Set initial background color
         Camera.main.backgroundColor = defaultBackgroundColor;
 
         foreach (GameObject obj in flippableObjects)

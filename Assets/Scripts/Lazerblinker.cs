@@ -4,7 +4,7 @@ using System.Collections;
 public class Lazerblinker : MonoBehaviour
 {
     public GameObject featureToToggle;
-    private bool isFeatureEnabled = false; // Initially set to false to ensure it's off for the first 5 seconds
+    private bool isFeatureEnabled = false;
     private bool isPaused = false;
 
     void Start()
@@ -12,7 +12,7 @@ public class Lazerblinker : MonoBehaviour
         PauseManager.OnPause += HandlePause;
         if (featureToToggle != null)
         {
-            featureToToggle.SetActive(isFeatureEnabled); // Start with the initial state (false)
+            featureToToggle.SetActive(isFeatureEnabled);
             StartCoroutine(ToggleFeatureCoroutine());
         }
         else
@@ -44,7 +44,7 @@ public class Lazerblinker : MonoBehaviour
 
             if (featureToToggle != null)
             {
-                isFeatureEnabled = !isFeatureEnabled; // Toggle the state
+                isFeatureEnabled = !isFeatureEnabled;
                 featureToToggle.SetActive(isFeatureEnabled);
             }
             else
