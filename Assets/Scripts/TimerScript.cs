@@ -40,26 +40,27 @@ public class TimerScript : MonoBehaviour
     {
         if (!isTimerStopped && !isPaused && remainingTime > 0) {
             remainingTime -= Time.deltaTime;
+            remainingTime = Mathf.Max(0, remainingTime);
+
             if (remainingTime <= initialTime * 0.2f) {
                 HandleWarningState();
             }
-        }
-        else if (remainingTime <= 0) {
-            remainingTime = 0;
-            isWarningActive = false;
-            if (clockRotation != null) {
-                clockRotation.StopRotation();
+
+            if (remainingTime == 0) {
+                isWarningActive = false;
+                if (clockRotation != null) {
+                    clockRotation.StopRotation();
+                }
+                timerText.enabled = true;
+                timerText.color = Color.red;
+                levelFailPanel.SetActive(true);
+                playerController.canMove = false;
+                SessionManager.Instance.PostSessionDataToFireBase();
             }
-            timerText.enabled = true;
-            timerText.color = Color.red;
-            levelFailPanel.SetActive(true);
-            playerController.canMove = false;
-            SessionManager.Instance.PostSessionDataToFireBase();
         }
 
         int mins = Mathf.FloorToInt(remainingTime / 60);
         int sec = Mathf.FloorToInt(remainingTime % 60);
-
         timerText.text = string.Format("{0:00}:{1:00}", mins, sec);
 
         if (!isWarningActive && remainingTime > 0) {

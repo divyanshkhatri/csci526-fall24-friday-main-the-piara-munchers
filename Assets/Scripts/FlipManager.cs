@@ -12,6 +12,7 @@ public class FlipManager : MonoBehaviour
     private bool canFlip = true;
     private SpriteRenderer playerSpriteRenderer;
     private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
+    private bool isZoomingCamera = true;
 
     private readonly Color flipColor = new Color(0.537f, 0.925f, 0.671f); // #664343
     private readonly Color defaultColor = Color.white;
@@ -56,6 +57,7 @@ public class FlipManager : MonoBehaviour
                 }
             }
         }
+        canFlip = !isZoomingCamera;
     }
 
     void OnDestroy()
@@ -70,7 +72,7 @@ public class FlipManager : MonoBehaviour
 
     void Update()
     {
-        if (canFlip && Input.GetKeyDown(flipKey))
+        if (canFlip && !isZoomingCamera && Input.GetKeyDown(flipKey))
         {
             ToggleFlip();
             OnFlip?.Invoke();
@@ -138,5 +140,11 @@ public class FlipManager : MonoBehaviour
                 objSpriteRenderer.color = originalColors[obj];
             }
         }
+    }
+
+    public void SetZoomState(bool isZooming)
+    {
+        isZoomingCamera = isZooming;
+        canFlip = !isZooming;
     }
 }

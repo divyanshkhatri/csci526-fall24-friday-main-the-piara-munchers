@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isOnPlatform = false;
     private Transform currentPlatform;
     public ClockRotation clockRotation;
+    private bool isZoomingCamera = true;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         cameraScript = Camera.main.GetComponent<CameraScript>();
         originalParent = transform.parent;
         clockRotation = FindObjectOfType<ClockRotation>();
+        SetCanMove(!isZoomingCamera);
     }
 
     void OnDestroy()
@@ -50,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!canMove)
+        if (!canMove || isZoomingCamera)
         {
             rb.velocity = Vector2.zero;
             return;
@@ -187,5 +189,20 @@ public class PlayerMovement : MonoBehaviour
     public Transform GetCurrentPlatform()
     {
         return currentPlatform;
+    }
+
+    public void SetZoomState(bool isZooming)
+    {
+        isZoomingCamera = isZooming;
+        SetCanMove(!isZooming);
+    }
+
+    private void SetCanMove(bool state)
+    {
+        canMove = state;
+        if (!state)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 }
