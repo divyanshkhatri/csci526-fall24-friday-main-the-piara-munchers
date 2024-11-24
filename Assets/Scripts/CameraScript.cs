@@ -6,12 +6,20 @@ public class CameraScript : MonoBehaviour
     public Transform player;
     public float smoothSpeed = 0.4f;
     public float heightOffsetPercentage = 0.5f;
-    public float shakeDuration = 0.2f;
+    public float shakeDuration = 0.4f;
     public float shakeMagnitude = 0.1f;
 
     private Vector3 shakeOffset = Vector3.zero;
     private Vector3 currentVelocity;
     private float smoothDampTime = 0.2f;
+    private Material redFlashMaterial;
+    private float flashDuration = 0.4f;
+
+    void Start()
+    {
+        redFlashMaterial = new Material(Shader.Find("Hidden/Internal-Colored"));
+        redFlashMaterial.color = new Color(1f, 0f, 0f, 0f);
+    }
 
     void LateUpdate()
     {
@@ -40,6 +48,12 @@ public class CameraScript : MonoBehaviour
         StartCoroutine(Shake());
     }
 
+    public void TriggerShakeAndFlash()
+    {
+        StartCoroutine(Shake());
+        StartCoroutine(RedFlash());
+    }
+
     private IEnumerator Shake()
     {
         float elapsed = 0.0f;
@@ -55,5 +69,26 @@ public class CameraScript : MonoBehaviour
         }
 
         shakeOffset = Vector3.zero;
+    }
+
+    private IEnumerator RedFlash()
+    {
+        float elapsed = 0f;
+        while (elapsed < flashDuration)
+        {
+            float alpha = Mathf.Lerp(0.3f, 0f, elapsed / flashDuration);
+            redFlashMaterial.color = new Color(1f, 0f, 0f, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        redFlashMaterial.color = new Color(1f, 0f, 0f, 0f);
+    }
+
+    void OnGUI()
+    {
+        if (redFlashMaterial.color.a > 0)
+        {
+            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), Texture2D.whiteTexture, ScaleMode.StretchToFill, true, 0, redFlashMaterial.color, 0, 0);
+        }
     }
 }

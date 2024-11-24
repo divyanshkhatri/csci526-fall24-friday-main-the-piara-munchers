@@ -86,6 +86,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 hitCount++;
                 UpdateHearts();
+                if (hitCount == 2) {
+                    cameraScript?.TriggerShakeAndFlash();
+                }
                 cameraScript?.TriggerShake();
             }
 
