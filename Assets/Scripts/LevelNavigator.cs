@@ -10,7 +10,7 @@ public class LevelNavigator : MonoBehaviour
 
     public void LoadTutorialLevel()
     {
-        SceneManager.LoadScene("LevelTutorial"); // Replace with your tutorial level scene name
+        SceneManager.LoadScene("LevelT1"); // Replace with your tutorial level scene name
     }
 
     public void LoadLevel1()

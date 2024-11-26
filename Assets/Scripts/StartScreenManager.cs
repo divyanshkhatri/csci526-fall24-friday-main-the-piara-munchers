@@ -5,7 +5,7 @@ public class StartScreenManager : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("LevelTutorial"); 
+        SceneManager.LoadScene("LevelT1"); 
     }
 
     public void OpenLevels()
