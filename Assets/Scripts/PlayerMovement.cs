@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform currentPlatform;
     public ClockRotation clockRotation;
     private bool isZoomingCamera = true;
+    public SpotlightEffect spotlightEffect;
 
     void Start()
     {
@@ -89,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
                 hitCount++;
                 UpdateHearts();
                 if (hitCount == 2) {
+                    spotlightEffect.TriggerFocusOnHeart();
                     cameraScript?.TriggerShakeAndFlash();
                 }
                 cameraScript?.TriggerShake();

@@ -11,10 +11,8 @@ public class SpotlightEffect : MonoBehaviour
 
     void Start()
     {
-        if (focusTargets.Length > 0)
-        {
-            FocusOnTarget(currentTargetIndex);
-        }
+        // Hide spotlight initially
+        spotlightMask.gameObject.SetActive(false);
     }
 
     public void FocusOnTarget(int index)
@@ -23,23 +21,19 @@ public class SpotlightEffect : MonoBehaviour
 
         Debug.Log("Focusing on: " + focusTargets[index].name);
 
-        // Convert target's world position to local canvas space
+        // Convert target's position to canvas local space
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            (RectTransform)canvas.transform,
+            canvas.transform as RectTransform,
             RectTransformUtility.WorldToScreenPoint(Camera.main, focusTargets[index].position),
             canvas.worldCamera,
             out localPoint
         );
 
+        // Show the spotlight and start moving it
+        spotlightMask.gameObject.SetActive(true);
         StartCoroutine(MoveSpotlight(localPoint));
         currentTargetIndex = index;
-    }
-
-    public void NextFocus()
-    {
-        int nextIndex = (currentTargetIndex + 1) % focusTargets.Length;
-        FocusOnTarget(nextIndex);
     }
 
     private IEnumerator MoveSpotlight(Vector2 targetPosition)
@@ -48,12 +42,26 @@ public class SpotlightEffect : MonoBehaviour
 
         while (Vector2.Distance(spotlightMask.anchoredPosition, targetPosition) > 0.1f)
         {
-            spotlightMask.anchoredPosition = Vector2.Lerp(spotlightMask.anchoredPosition, targetPosition, Time.deltaTime * transitionSpeed);
-            Debug.Log($"Moving to: {targetPosition} | Current: {spotlightMask.anchoredPosition}");
+            // Smoothly move the spotlight
+            spotlightMask.anchoredPosition = Vector2.Lerp(
+                spotlightMask.anchoredPosition,
+                targetPosition,
+                Time.deltaTime * transitionSpeed
+            );
             yield return null;
         }
 
         spotlightMask.anchoredPosition = targetPosition;
         Debug.Log("Spotlight moved to target position");
+
+        // Wait for a brief moment to highlight the target, then hide the spotlight
+        yield return new WaitForSeconds(1f);
+        spotlightMask.gameObject.SetActive(false);
+    }
+
+    public void TriggerFocusOnHeart()
+    {
+        // Assume the heart UI element is the first in the focusTargets array
+        FocusOnTarget(0); // Update the index if the heart is not at 0
     }
 }
