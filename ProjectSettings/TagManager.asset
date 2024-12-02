@@ -13,6 +13,7 @@ TagManager:
   - Movingplatform
   - MovingPlatform
   - Walkable_plain
+  - LaserLight
   layers:
   - Default
   - TransparentFX

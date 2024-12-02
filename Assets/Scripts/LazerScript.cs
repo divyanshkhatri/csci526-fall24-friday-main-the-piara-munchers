@@ -20,6 +20,8 @@ public class LazerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerController.spriteRenderer.color = Color.red;
+            playerController.hitCount = 3; // Set hitCount to 3 to indicate game over
+            playerController.UpdateHearts(); // Update hearts to reflect the game over state
             playerController.canMove = false;
             playerController.rb.velocity = Vector2.zero;
             levelFailPanel.SetActive(true);
