@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class PlayerMovement : MonoBehaviour
     public ClockRotation clockRotation;
     private bool isZoomingCamera = true;
     public SpotlightEffect spotlightEffect;
+
+
+    [SerializeField] private Image redOverlay; // Assign a UI Image in the canvas
+    [SerializeField] private float flashDuration = 0.2f; // Duration of the red flash effect in seconds
+
 
     void Start()
     {
@@ -89,8 +95,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 hitCount++;
                 UpdateHearts();
+<<<<<<< Updated upstream
                 if (hitCount == 2) {
                     spotlightEffect.TriggerFocusOnHeart();
+=======
+                if (hitCount == 2)
+                {
+>>>>>>> Stashed changes
                     cameraScript?.TriggerShakeAndFlash();
                 }
                 cameraScript?.TriggerShake();
@@ -170,13 +181,122 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    // void UpdateHearts()
+    // {
+    //     for (int i = 0; i < hearts.Count; i++)
+    //     {
+    //         hearts[i].enabled = i < 3 - hitCount;
+    //     }
+    // }
     void UpdateHearts()
     {
         for (int i = 0; i < hearts.Count; i++)
         {
-            hearts[i].enabled = i < 3 - hitCount;
+            if (i < 3 - hitCount)
+            {
+                hearts[i].enabled = true; // Keep hearts visible
+            }
+            else
+            {
+                if (hearts[i].enabled) // Only animate hearts that are currently visible
+                {
+                    // Replace the original heart with the broken heart
+                    GameObject brokenHeart = GameObject.Find($"brokenHeart_{i + 1}");
+                    if (brokenHeart != null)
+                    {
+                        AnimateHeartLoss(hearts[i], brokenHeart);
+                    }
+                    else
+                    {
+                        Debug.LogError($"Broken heart not found: brokenHeart_{i + 1}");
+                    }
+                }
+                hearts[i].enabled = false; // Hide heart after animation
+            }
+        }
+
+        // Trigger other damage effects like screen flash or sound
+        TriggerDamageEffects();
+    }
+
+
+
+
+
+    void TriggerDamageEffects()
+    {
+        Debug.Log("Triggering damage effects");
+
+        // Flash the red overlay
+        FlashRedOverlay();
+
+        // Play a damage sound (ensure an AudioSource is added)
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
+
+
+    void FlashRedOverlay()
+    {
+        if (redOverlay == null) return;
+
+        redOverlay.gameObject.SetActive(true); // Ensure the overlay is visible
+
+        // Fade in the red overlay to 30% opacity
+        LeanTween.value(gameObject, 0f, 0.3f, flashDuration / 2f)
+            .setOnUpdate((float alpha) =>
+            {
+                Color color = redOverlay.color;
+                color.a = alpha;
+                redOverlay.color = color;
+            })
+            .setEaseInOutQuad()
+            .setOnComplete(() =>
+            {
+                // Fade out the red overlay to 0% opacity
+                LeanTween.value(gameObject, 0.3f, 0f, flashDuration / 2f)
+                    .setOnUpdate((float alpha) =>
+                    {
+                        Color color = redOverlay.color;
+                        color.a = alpha;
+                        redOverlay.color = color;
+                    })
+                    .setEaseInOutQuad()
+                    .setOnComplete(() =>
+                    {
+                        redOverlay.gameObject.SetActive(false); // Hide the overlay after fading out
+                    });
+            });
+    }
+
+
+
+    void AnimateHeartLoss(Image heart, GameObject brokenHeart)
+    {
+        if (heart == null || brokenHeart == null) return;
+
+        // Scale down the original heart and then hide it
+        LeanTween.scale(heart.rectTransform, Vector3.zero, 0.3f)
+            .setEaseInBack()
+            .setOnComplete(() =>
+            {
+                heart.enabled = false; // Hide the original heart
+                heart.rectTransform.localScale = Vector3.one; // Reset scale for future use
+
+                // Activate and animate the broken heart
+                brokenHeart.SetActive(true);
+                LeanTween.scale(brokenHeart.GetComponent<RectTransform>(), Vector3.one, 0.3f).setEaseOutBounce();
+                LeanTween.alpha(brokenHeart.GetComponent<RectTransform>(), 1f, 0.3f).setEaseInOutQuad();
+            });
+    }
+
+
+
+
+
 
     void HandleFlip()
     {
