@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
@@ -87,10 +88,10 @@ public class PlayerMovement : MonoBehaviour
             if (hitCount < 3)
             {
                 hitCount++;
-                UpdateHearts();
-                if (hitCount == 2) {
+                StartCoroutine(AnimateHeartLoss());
+                //if (hitCount == 2) {
                     cameraScript?.TriggerShakeAndFlash();
-                }
+                //}
                 cameraScript?.TriggerShake();
             }
 
@@ -123,6 +124,35 @@ public class PlayerMovement : MonoBehaviour
         {
             canMove = false;
             clockRotation?.StopRotation();
+        }
+    }
+
+    IEnumerator AnimateHeartLoss()
+    {
+        if (hearts.Count > 0 && hitCount <= hearts.Count)
+        {
+            Image heart = hearts[hearts.Count - hitCount];
+            Vector3 originalScale = heart.transform.localScale;
+            Vector3 targetScale = originalScale * 1.5f;
+            float duration = 0.5f;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                heart.transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            elapsed = 0f;
+            while (elapsed < duration)
+            {
+                heart.transform.localScale = Vector3.Lerp(targetScale, originalScale, elapsed / duration);
+                elapsed += Time.deltaTime;
+                yield return null;
+            }
+
+            heart.enabled = false;
         }
     }
 
