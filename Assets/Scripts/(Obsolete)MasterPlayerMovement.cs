@@ -11,7 +11,7 @@ public class MasterPlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float maxHorizontalSpeed = 4f;
     [SerializeField] private float smoothTime = 0.1f;
-    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private float jumpForce = 6f;
 
     private float currentVelocity = 0f;
     private bool canMove = true;

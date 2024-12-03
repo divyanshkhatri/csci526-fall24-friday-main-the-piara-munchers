@@ -92,15 +92,15 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
 
-        
+
         if (Input.GetKey(flipKey))
         {
             anim.SetInteger("movement", 0);
-            rb.velocity = new Vector2(0, rb.velocity.y); 
+            rb.velocity = new Vector2(0, rb.velocity.y);
             return;
         }
 
-        
+
         if (moveInput > 0)
         {
             float horizontalSpeed = moveSpeed;
@@ -146,6 +146,15 @@ public class PlayerMovement : MonoBehaviour
                 hasTriggeredFail = true;
                 hitCount = 3;
                 canMove = false;
+                if (rb != null)
+                {
+                    rb.velocity = Vector2.zero;
+                    rb.isKinematic = true;
+                }
+                if (anim != null)
+                {
+                    anim.enabled = false;
+                }
                 levelFailPanel?.SetActive(true);
                 if (SessionManager.Instance != null)
                 {
@@ -245,6 +254,17 @@ public class PlayerMovement : MonoBehaviour
     void HandlePause(bool isPaused)
     {
         canMove = !isPaused;
+
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = isPaused;
+        }
+
+        if (anim != null)
+        {
+            anim.enabled = !isPaused;
+        }
     }
 
     void InitializeHearts()

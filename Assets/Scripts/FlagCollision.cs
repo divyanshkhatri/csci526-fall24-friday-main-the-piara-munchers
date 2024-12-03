@@ -52,7 +52,7 @@ public class FlagCollision : MonoBehaviour
             }
 
             levelCompletePanel.SetActive(true);
-            if (SceneManager.GetActiveScene().buildIndex == 6)
+            if (SceneManager.GetActiveScene().buildIndex == 7)
             {
                 SessionManager.Instance.PostSessionDataToFireBase();
                 nextLevelButton.gameObject.SetActive(false);
