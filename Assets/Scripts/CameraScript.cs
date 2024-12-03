@@ -17,6 +17,7 @@ public class CameraScript : MonoBehaviour
     private float initialOrthographicSize;
     private float targetOrthographicSize;
     private float zoomDuration = 1.5f;
+    public bool IsZooming { get { return isZooming; } }
     private bool isZooming = true;
     private Vector3 zoomStartPosition;
     private Vector3 zoomEndPosition;

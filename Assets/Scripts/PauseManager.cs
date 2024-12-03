@@ -14,6 +14,7 @@ public class PauseManager : MonoBehaviour
     public Button mainMenuButton;
     public ClockRotation clockRotation;
     public Button pauseButton;
+    private CameraScript cameraScript;
 
     void Start()
     {
@@ -43,10 +44,12 @@ public class PauseManager : MonoBehaviour
           Debug.LogError("mainMenuButton is not assigned in the Inspector.");
         }
 
+        cameraScript = FindObjectOfType<CameraScript>();
+
         if (pauseButton != null)
         {
             pauseButton.onClick.AddListener(TogglePause);
-            pauseButton.interactable = true;
+            pauseButton.interactable = false;
         } else {
           Debug.LogError("pauseButton is not assigned in the Inspector.");
         }
@@ -54,7 +57,12 @@ public class PauseManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(pauseKey))
+        if (pauseButton != null && cameraScript != null)
+        {
+            pauseButton.interactable = !cameraScript.IsZooming;
+        }
+
+        if (Input.GetKeyDown(pauseKey) && cameraScript != null && !cameraScript.IsZooming)
         {
             TogglePause();
         }
