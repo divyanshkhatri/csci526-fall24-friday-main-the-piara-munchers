@@ -79,7 +79,7 @@ public class FlipManager : MonoBehaviour
         }
     }
 
-    void ToggleFlip()
+    public void ToggleFlip()
     {
         isFlipped = !isFlipped;
 

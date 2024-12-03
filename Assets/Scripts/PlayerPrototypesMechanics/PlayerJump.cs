@@ -1,4 +1,4 @@
-﻿ using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(GroundChecker))]
 public class PlayerJump : MonoBehaviour
@@ -24,7 +24,11 @@ public class PlayerJump : MonoBehaviour
         onGround.Invoke();
     }
 
-    void Update() => anim.SetFloat("JumpAxis", rb.velocity.y);
+    void Update()
+    {
+        anim.SetFloat("JumpAxis", rb.velocity.y);
+        anim.SetBool("Jumping", !onGround.Invoke());
+    }
 
     void Jump()
     {
