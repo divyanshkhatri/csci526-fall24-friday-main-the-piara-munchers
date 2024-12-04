@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform currentPlatform;
     public ClockRotation clockRotation;
     private bool isZoomingCamera = true;
+    public Animator animator;
 
     void Start()
     {
@@ -62,8 +63,10 @@ public class PlayerMovement : MonoBehaviour
         if (moveInput < 0)
         {
             moveInput = 0;
+            
         }
         rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
