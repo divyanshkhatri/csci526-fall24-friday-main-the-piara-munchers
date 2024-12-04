@@ -22,6 +22,8 @@ public class KeyStrokeTutorial : MonoBehaviour
         {
             background.gameObject.SetActive(false);
         }
+        tutorialText.text = "Press right key to move";
+        StartCoroutine(ShowTextAfterDelay(3));
     }
 
     void Update()
@@ -51,7 +53,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                         {
                             tutorialText.text = "Seems like the world flipped, press left key again to flip";
                             tutorialText.gameObject.SetActive(true);
-                            StartCoroutine(HideTextAfterDelay(3));
+                            StartCoroutine(HideTextAfterDelay(10));
                         }
                         if (background != null)
                         {
@@ -65,7 +67,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                         {
                             tutorialText.text = "Great! You've flipped the world back to normal";
                             tutorialText.gameObject.SetActive(true);
-                            StartCoroutine(HideTextAfterDelay(3));
+                            StartCoroutine(HideTextAfterDelay(10));
                         }
                         if (background != null)
                         {
@@ -91,6 +93,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                         }
                     }
                 }
+                /*
                 else
                 {
                     rightKeyPressTime = 0f;
@@ -102,7 +105,7 @@ public class KeyStrokeTutorial : MonoBehaviour
                     {
                         background.gameObject.SetActive(false);
                     }
-                }
+                }*/
             }
         }
     }
@@ -118,5 +121,19 @@ public class KeyStrokeTutorial : MonoBehaviour
         {
             background.gameObject.SetActive(false);
         }
+    }
+
+    private IEnumerator ShowTextAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (tutorialText != null)
+        {
+            tutorialText.gameObject.SetActive(true);
+        }
+        if (background != null)
+        {
+            background.gameObject.SetActive(true);
+        }
+        Debug.Log("UI element is now visible.");
     }
 }
