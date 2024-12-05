@@ -32,7 +32,7 @@ public class FlipTutorial : MonoBehaviour
             {
                 hasFlipped = true;
                 ShowMessage("Move forward to get to the flag", 650);
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(10f);
                 HideMessage();
             }
             yield return null;

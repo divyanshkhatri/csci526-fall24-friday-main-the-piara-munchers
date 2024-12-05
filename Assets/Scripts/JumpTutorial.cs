@@ -50,7 +50,7 @@ public class JumpTutorial : MonoBehaviour
             }
         }
     }
-
+    /*
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -61,5 +61,5 @@ public class JumpTutorial : MonoBehaviour
                 backgroundImage.SetActive(false);
             }
         }
-    }
+    }*/
 }

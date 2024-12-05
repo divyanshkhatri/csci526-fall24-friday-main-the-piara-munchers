@@ -389,8 +389,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 20
-  image: {fileID: 87949353}
 --- !u!114 &87949353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1607,7 +1605,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &407792921
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1627,7 +1625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3, y: 433}
+  m_AnchoredPosition: {x: 599, y: 466}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &415064569
@@ -2721,7 +2719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &557752709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2795,8 +2793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 15
-  image: {fileID: 592168108}
 --- !u!114 &592168108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3748,6 +3744,7 @@ MonoBehaviour:
   - {fileID: 1530651520}
   hideuiElements:
   - {fileID: 1170453888}
+  - {fileID: 1839360110}
   currentLevel: 0
 --- !u!212 &768484624
 SpriteRenderer:
@@ -4773,7 +4770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 290}
+  m_AnchoredPosition: {x: 0, y: -191}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1170453888
@@ -4811,7 +4808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1692}
+  m_AnchoredPosition: {x: 0, y: -328}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1172470562
@@ -6115,8 +6112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adb30198aa32dd140b5750692dd48104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 20
-  image: {fileID: 1486778021}
 --- !u!114 &1486778021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6353,7 +6348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -45, y: -375}
+  m_AnchoredPosition: {x: -45, y: -328}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1550576301
@@ -6621,7 +6616,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -6795,6 +6790,7 @@ MonoBehaviour:
   - {fileID: 1170453888}
   hideuiElements:
   - {fileID: 1530651520}
+  - {fileID: 1839360110}
   currentLevel: 0
 --- !u!114 &1605462596
 MonoBehaviour:
@@ -7088,6 +7084,7 @@ MonoBehaviour:
   - {fileID: 1530651520}
   hideuiElements:
   - {fileID: 1170453888}
+  - {fileID: 1839360110}
   currentLevel: 0
 --- !u!212 &1698069972
 SpriteRenderer:
@@ -7643,7 +7640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1839360111
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7663,7 +7660,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1688}
+  m_AnchoredPosition: {x: 0, y: -328}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1867447685
