@@ -58,6 +58,10 @@ public class FlagCollision : MonoBehaviour
                 nextLevelButton.gameObject.SetActive(false);
             }
             playerController.canMove = false;
+            if (playerController.anim != null)
+            {
+                playerController.anim.enabled = false;
+            }
         }
     }
 

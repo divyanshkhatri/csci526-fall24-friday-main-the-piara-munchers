@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Transform currentPlatform;
     public ClockRotation clockRotation;
     private bool isZoomingCamera = true;
-    private Animator anim;
+    public Animator anim;
 
     public KeyCode flipKey = KeyCode.LeftArrow;
     public FlipManager flipManager;
