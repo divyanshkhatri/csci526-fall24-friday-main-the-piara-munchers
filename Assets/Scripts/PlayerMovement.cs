@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private int contactCount = 0;
     private bool isTouchingWall = false;
     private readonly float wallCheckThreshold = 80f;
+    private Vector3 originalScale;  // Add this field at the top with other fields
 
     void Start()
     {
@@ -54,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
         originalParent = transform.parent;
         clockRotation = FindObjectOfType<ClockRotation>();
         SetCanMove(!isZoomingCamera);
+        originalScale = transform.localScale;  // Add this line
     }
 
     void OnDestroy()
@@ -232,7 +234,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
+            // Store the current orientation (not scale)
+            bool facingRight = transform.localScale.x > 0;
+            
             transform.SetParent(collision.transform);
+            
+            // Apply the correct scale based on orientation
+            transform.localScale = new Vector3(
+                facingRight ? Mathf.Abs(originalScale.x) : -Mathf.Abs(originalScale.x),
+                originalScale.y,
+                originalScale.z
+            );
+            
             isOnPlatform = true;
             currentPlatform = collision.transform;
             rb.interpolation = RigidbodyInterpolation2D.None;
@@ -256,21 +269,6 @@ public class PlayerMovement : MonoBehaviour
         SessionManager.Instance.isDataPosted = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
-    // void Jump()
-    // {
-    //     if (Input.GetButtonDown("Jump"))
-    //         if (isGrounded)
-    //             rb.velocity = new Vector2(rb.velocity.x, Time.fixedDeltaTime * jumpForce);
-    //     anim.SetBool("Jumping", !isGrounded);
-    // }
-
-    // void FlexibeJump()
-    // {
-    //     if (Input.GetButtonUp("Jump") && rb.velocity.y > 0)
-    //         rb.velocity = new Vector2(rb.velocity.x, Time.deltaTime * 0.50f);
-    // }
-
 
     void HandlePause(bool isPaused)
     {

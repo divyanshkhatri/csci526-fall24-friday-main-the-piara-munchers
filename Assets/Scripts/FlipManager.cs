@@ -91,8 +91,11 @@ public class FlipManager : MonoBehaviour
         if (isOnPlatform && currentPlatform != null)
         {
             relativePosition = player.position - currentPlatform.position;
+            // Temporarily detach from platform
+            player.SetParent(null);
         }
 
+        // Handle world flipping
         foreach (GameObject obj in flippableObjects)
         {
             if (obj != player.gameObject)
@@ -117,12 +120,15 @@ public class FlipManager : MonoBehaviour
             }
         }
 
+        // Reattach to platform if needed and update position
         if (isOnPlatform && currentPlatform != null)
         {
             relativePosition.x = -relativePosition.x;
             player.position = currentPlatform.position + relativePosition;
+            player.SetParent(currentPlatform);
         }
 
+        // Update visuals
         if (playerSpriteRenderer != null)
         {
             playerSpriteRenderer.color = isFlipped ? flipColor : defaultColor;
