@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public int hitCount = 0;
     public SpriteRenderer spriteRenderer;
     public Transform groundCheck;
-    public float checkRadius = 0.5f;
+    public float checkRadius = 0.1f;
     public LayerMask groundLayer;
     public GameObject levelFailPanel;
     public bool canMove = true;
@@ -33,7 +33,10 @@ public class PlayerMovement : MonoBehaviour
 
     public KeyCode flipKey = KeyCode.LeftArrow;
     public FlipManager flipManager;
-
+    private ContactPoint2D[] contactPoints = new ContactPoint2D[4];
+    private int contactCount = 0;
+    private bool isTouchingWall = false;
+    private readonly float wallCheckThreshold = 80f;
 
     void Start()
     {
@@ -92,7 +95,6 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveInput = Input.GetAxis("Horizontal");
 
-
         if (Input.GetKey(flipKey))
         {
             anim.SetInteger("movement", 0);
@@ -100,13 +102,10 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-
-        if (moveInput > 0)
+        if (moveInput > 0 && !isTouchingWall)
         {
             float horizontalSpeed = moveSpeed;
             rb.velocity = new Vector2(moveInput * horizontalSpeed, rb.velocity.y);
-
-
             anim.SetInteger("movement", (int)Input.GetAxisRaw("Horizontal"));
         }
         else
@@ -116,10 +115,32 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
     void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        contactCount = rb.GetContacts(contactPoints);
+        isGrounded = false;
+        isTouchingWall = false;
+
+        for (int i = 0; i < contactCount; i++)
+        {
+            float angle = Vector2.Angle(contactPoints[i].normal, Vector2.up);
+
+            if (angle <= 45f)
+            {
+                isGrounded = true;
+            }
+            else if (angle >= wallCheckThreshold)
+            {
+                isTouchingWall = true;
+            }
+        }
+
+        if (isTouchingWall)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        Debug.DrawRay(transform.position, Vector2.down * checkRadius, isGrounded ? Color.green : Color.red);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -310,6 +331,15 @@ public class PlayerMovement : MonoBehaviour
         if (!state)
         {
             rb.velocity = Vector2.zero;
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        if (groundCheck != null)
+        {
+            Gizmos.color = isGrounded ? Color.green : Color.red;
+            Gizmos.DrawWireSphere(groundCheck.position, checkRadius);
         }
     }
 }
