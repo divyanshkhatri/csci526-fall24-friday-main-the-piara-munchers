@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public GameObject correspondingUIElement; 
+    public GameObject correspondingUIElement;
+    public GameObject collectablesBackground;
     public static int collectiblesRemaining;
     public int totalCollectibles;
     public ChangeFlagColor[] flagColorChangers; 
@@ -27,7 +28,8 @@ public class Collectible : MonoBehaviour
             {
                 foreach (var flagColorChanger in flagColorChangers)
                 {
-                    flagColorChanger.ChangeColorToYellow(); 
+                    flagColorChanger.ChangeColorToYellow();
+                    collectablesBackground.SetActive(false);
                 }
             }
         }
