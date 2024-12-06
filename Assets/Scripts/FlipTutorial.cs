@@ -9,12 +9,13 @@ public class FlipTutorial : MonoBehaviour
     public GameObject messageBackground;
     private bool hasFlipped = false;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    // Trigger method to detect when the player enters the trigger
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision detected with: " + collision.collider.name);
-        if (collision.collider.CompareTag("Player"))
+        Debug.Log("Trigger detected with: " + other.name);
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Collision detected with Player");
+            Debug.Log("Trigger detected with Player");
             if (!hasFlipped)
             {
                 ShowMessage("Press left key to flip the world!", 650);
@@ -24,6 +25,7 @@ public class FlipTutorial : MonoBehaviour
         }
     }
 
+    // Coroutine to wait for player input
     private IEnumerator WaitForFlipInput()
     {
         while (!hasFlipped)
@@ -39,22 +41,26 @@ public class FlipTutorial : MonoBehaviour
         }
     }
 
+    // Method to show a message on the screen
     private void ShowMessage(string message, float backgroundWidth = 0)
     {
         messageText.text = message;
         messageText.alignment = TextAlignmentOptions.Center;
         messageText.gameObject.SetActive(true);
         messageBackground.SetActive(true);
+
         RectTransform rt = messageBackground.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(backgroundWidth, rt.sizeDelta.y);
     }
 
+    // Method to hide the message from the screen
     private void HideMessage()
     {
         messageText.gameObject.SetActive(false);
         messageBackground.SetActive(false);
     }
 
+    // Check if the player has pressed the left arrow key to "flip the world"
     private bool PlayerHasFlipped()
     {
         return Input.GetKeyDown(KeyCode.LeftArrow);
