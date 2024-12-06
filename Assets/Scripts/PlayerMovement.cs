@@ -109,6 +109,12 @@ public class PlayerMovement : MonoBehaviour
             float horizontalSpeed = moveSpeed;
             rb.velocity = new Vector2(moveInput * horizontalSpeed, rb.velocity.y);
             anim.SetInteger("movement", (int)Input.GetAxisRaw("Horizontal"));
+            
+            // Set scale to face right when moving right
+            if (!isOnPlatform)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+            }
         }
         else
         {
@@ -234,14 +240,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("MovingPlatform"))
         {
-            // Store the current orientation (not scale)
-            bool facingRight = transform.localScale.x > 0;
-            
             transform.SetParent(collision.transform);
             
-            // Apply the correct scale based on orientation
+            // Preserve the current facing direction
+            float currentScaleX = transform.localScale.x;
             transform.localScale = new Vector3(
-                facingRight ? Mathf.Abs(originalScale.x) : -Mathf.Abs(originalScale.x),
+                currentScaleX >= 0 ? Mathf.Abs(originalScale.x) : -Mathf.Abs(originalScale.x),
                 originalScale.y,
                 originalScale.z
             );

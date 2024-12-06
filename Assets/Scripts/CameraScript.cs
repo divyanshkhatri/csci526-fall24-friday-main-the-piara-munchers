@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     public float heightOffsetPercentage = 0.5f;
     public float shakeDuration = 0.4f;
     public float shakeMagnitude = 0.1f;
-    public float levelMargin = 2f;
+    public float levelMargin = 0.5f; // Reduced from 2f to 0.5f
     private Vector3 shakeOffset = Vector3.zero;
     private Vector3 currentVelocity;
     private float smoothDampTime = 0.2f;
@@ -26,6 +26,7 @@ public class CameraScript : MonoBehaviour
     public GameObject letters;
     private PlayerMovement playerMovement;
     private FlipManager flipManager;
+    public GameObject[] walls = new GameObject[3]; // Replace zoomTargetObjects with walls
 
     void Start()
     {
@@ -58,35 +59,70 @@ public class CameraScript : MonoBehaviour
 
     private void SetInitialCameraView()
     {
-        GameObject[] allObjects = GameObject.FindObjectsOfType<GameObject>();
-        float leftmost = float.MaxValue;
-        float rightmost = float.MinValue;
-        float topmost = float.MinValue;
-        float bottommost = float.MaxValue;
-
-        foreach (GameObject obj in allObjects)
+        if (walls == null || walls.Length != 3)
         {
-            if (obj.activeInHierarchy && obj.GetComponent<Renderer>())
+            Debug.LogWarning("Exactly 3 walls must be assigned for proper camera zoom.");
+            return;
+        }
+
+        // Calculate the center point of the three walls
+        Vector3 centerPoint = Vector3.zero;
+        Vector2 minPoint = new Vector2(float.MaxValue, float.MaxValue);
+        Vector2 maxPoint = new Vector2(float.MinValue, float.MinValue);
+
+        // Find the top wall and calculate its bounds
+        GameObject topWall = null;
+        float highestY = float.MinValue;
+        foreach (GameObject wall in walls)
+        {
+            if (wall != null && wall.transform.position.y > highestY)
             {
-                Vector3 position = obj.transform.position;
-                leftmost = Mathf.Min(leftmost, position.x);
-                rightmost = Mathf.Max(rightmost, position.x);
-                topmost = Mathf.Max(topmost, position.y);
-                bottommost = Mathf.Min(bottommost, position.y);
+                highestY = wall.transform.position.y;
+                topWall = wall;
             }
         }
 
-        leftmost -= levelMargin;
-        rightmost += levelMargin;
+        // Calculate bounds for all walls
+        foreach (GameObject wall in walls)
+        {
+            if (wall != null)
+            {
+                centerPoint += wall.transform.position;
+                SpriteRenderer renderer = wall.GetComponent<SpriteRenderer>();
+                if (renderer != null)
+                {
+                    Bounds bounds = renderer.bounds;
 
-        float width = rightmost - leftmost;
-        float height = topmost - bottommost;
+                    // Update minPoint and maxPoint for horizontal bounds
+                    minPoint.x = Mathf.Min(minPoint.x, bounds.min.x);
+                    maxPoint.x = Mathf.Max(maxPoint.x, bounds.max.x);
+
+                    // For vertical bounds, explicitly consider the top wall's bounds
+                    if (wall == topWall)
+                    {
+                        maxPoint.y = Mathf.Max(maxPoint.y, bounds.max.y);
+                    }
+                    minPoint.y = Mathf.Min(minPoint.y, bounds.min.y);
+                }
+            }
+        }
+        centerPoint /= 3f;
+
         Camera cam = GetComponent<Camera>();
 
-        initialOrthographicSize = Mathf.Max(width / cam.aspect, height) / 1.8f;
+        // Calculate the minimum required orthographic size to fit the walls
+        float width = maxPoint.x - minPoint.x;
+        float height = maxPoint.y - minPoint.y;
+
+        float verticalSize = height / 2f;
+        float horizontalSize = (width / 2f) / cam.aspect;
+
+        // Use the larger of the two sizes to ensure all walls are visible
+        initialOrthographicSize = Mathf.Max(verticalSize, horizontalSize);
         cam.orthographicSize = initialOrthographicSize;
 
-        zoomStartPosition = new Vector3((leftmost + rightmost) / 2f, (topmost + bottommost) / 2f, transform.position.z);
+        // Position the camera at the center of the walls
+        zoomStartPosition = new Vector3(centerPoint.x, minPoint.y + verticalSize, transform.position.z);
         transform.position = zoomStartPosition;
 
         float cameraHeight = targetOrthographicSize * 2f;
@@ -97,6 +133,7 @@ public class CameraScript : MonoBehaviour
             transform.position.z
         );
     }
+
 
     private IEnumerator ZoomToTarget()
     {
